@@ -1,0 +1,3217 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#f7f0e6">
+    <title>Un lugarcito para vos</title>
+    <meta name="description" content="Un lugarcito entre las estrellas para mi princesa tikita.">
+    <style>
+      :root {
+        color-scheme: dark;
+        --ink: #f3edf9;
+        --muted: #b6abc8;
+        --lilac: #cfb9fa;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: #100f24;
+        color: var(--ink);
+        font: 15px/1.65 system-ui,sans-serif;
+      }
+
+      button,a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      button {
+        font: inherit;
+        cursor: pointer;
+      }
+
+      button:focus-visible,a:focus-visible {
+        outline: 2px solid #ead5ab;
+        outline-offset: 6px;
+      }
+
+      body:before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(ellipse at 75% 30%,#4b326b36,transparent 55%),radial-gradient(ellipse at 5% 80%,#303b6133,transparent 50%);
+      }
+
+      #stars {
+        position: absolute;
+        inset: 0;
+        height: 1000px;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .speck {
+        position: absolute;
+        background: #e7dbff;
+        border-radius: 50%;
+        animation: twinkle 5s ease-in-out infinite alternate;
+      }
+
+      @keyframes twinkle {
+        to {
+          opacity: .2;
+        }
+      }
+
+      header {
+        position: relative;
+        max-width: 1320px;
+        margin: auto;
+        padding: 30px 6%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #fff1;
+      }
+
+      .brand {
+        font: 21px Georgia,serif;
+        letter-spacing: .4px;
+      }
+
+      .brand span {
+        color: var(--lilac);
+        margin-right: 10px;
+      }
+
+      header small {
+        font-size: 10px;
+        letter-spacing: 2px;
+        color: var(--muted);
+      }
+
+      main {
+        position: relative;
+        max-width: 1320px;
+        margin: auto;
+      }
+
+      .hero {
+        min-height: 680px;
+        display: grid;
+        grid-template-columns: 1fr 1.05fr;
+        align-items: center;
+        padding: 48px 6% 64px;
+        gap: 15px;
+      }
+
+      .eyebrow {
+        color: var(--lilac);
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-size: 10px;
+      }
+
+      .hero h1 {
+        font: clamp(48px,5.6vw,79px)/1.08 Georgia,serif;
+        font-weight: normal;
+        letter-spacing: -2px;
+        margin: 24px 0;
+      }
+
+      .hero h1 em {
+        color: var(--lilac);
+        font-weight: normal;
+      }
+
+      .intro {
+        color: var(--muted);
+        max-width: 340px;
+        font-size: 15px;
+        line-height: 1.9;
+      }
+
+      .primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 25px;
+        border: 1px solid #d2baff;
+        background: #cfb9fa;
+        color: #251c37;
+        padding: 13px 23px;
+        border-radius: 30px;
+        text-decoration: none;
+        margin-top: 22px;
+        font-size: 13px;
+        transition: transform .2s;
+      }
+
+      .primary:hover {
+        transform: translateY(-3px);
+      }
+
+      .little {
+        font: italic 15px Georgia,serif;
+        color: #978ca9;
+        margin-top: 25px;
+      }
+
+      .sky {
+        position: relative;
+        height: 510px;
+        width: 100%;
+      }
+
+      .orbit {
+        position: absolute;
+        border: 1px solid #b9a2dc1c;
+        border-radius: 50%;
+        width: 390px;
+        height: 390px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+
+      .orbit.two {
+        width: 270px;
+        height: 270px;
+      }
+
+      .moon {
+        position: absolute;
+        width: 112px;
+        height: 112px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%,#fffae5,#d9c4a6);
+        top: calc(50% - 56px);
+        left: calc(50% - 56px);
+        box-shadow: 0 0 65px #e4d3b722,inset -10px -8px 20px #a4948970;
+      }
+
+      .moon:after {
+        content: "";
+        position: absolute;
+        inset: -5px -5px 16px 27px;
+        background: #19152e;
+        border-radius: 50%;
+        box-shadow: -3px 4px 12px #251e3933;
+      }
+
+      .sky-lines {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: .4;
+      }
+
+      .star-link {
+        position: absolute;
+        background: none;
+        border: 0;
+        color: #e6ddf5;
+        text-align: center;
+        transform: translate(-50%,-50%);
+        padding: 10px;
+        min-width: 120px;
+      }
+
+      .star-link .spark {
+        display: block;
+        font-size: 32px;
+        line-height: 1.3;
+        color: #dbc6ff;
+        text-shadow: 0 0 22px #b999fb;
+        transition: transform .3s;
+      }
+
+      .star-link:hover .spark {
+        transform: scale(1.4) rotate(30deg);
+      }
+
+      .star-link small {
+        display: block;
+        font-size: 11px;
+        letter-spacing: .7px;
+        margin-top: 8px;
+      }
+
+      .s1 {
+        left: 29%;
+        top: 18%;
+      }
+
+      .s2 {
+        left: 77%;
+        top: 30%;
+      }
+
+      .s3 {
+        left: 85%;
+        top: 65%;
+      }
+
+      .s4 {
+        left: 47%;
+        top: 87%;
+      }
+
+      .s5 {
+        left: 14%;
+        top: 62%;
+      }
+
+      .sky-caption {
+        position: absolute;
+        bottom: -14px;
+        width: 100%;
+        text-align: center;
+        color: #8f829f;
+        font-size: 10px;
+        letter-spacing: 1px;
+      }
+
+      .section {
+        padding: 65px 6% 80px;
+        border-top: 1px solid #fff1;
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        margin-bottom: 34px;
+        gap: 20px;
+      }
+
+      h2 {
+        font: 36px/1.2 Georgia,serif;
+        font-weight: normal;
+        margin: 10px 0 0;
+      }
+
+      .section-head p {
+        font-size: 12px;
+        color: var(--muted);
+        max-width: 240px;
+        margin: 0;
+      }
+
+      .envelopes {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 24px;
+      }
+
+      .envelope {
+        position: relative;
+        min-height: 210px;
+        color: #f1e8ff;
+        border: 1px solid #76618d65;
+        border-radius: 6px;
+        background: linear-gradient(145deg,#30263f,#231c34);
+        overflow: hidden;
+        padding: 100px 15px 25px;
+        transition: transform .3s,background .3s;
+      }
+
+      .envelope:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 95px;
+        background: #c6a6e30b;
+        clip-path: polygon(0 0,100% 0,50% 100%);
+        border-top: 1px solid #cbb0ec55;
+      }
+
+      .envelope:after {
+        content: '♡';
+        position: absolute;
+        top: 67px;
+        left: calc(50% - 19px);
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: #a68abb;
+        color: #21182f;
+        font-size: 24px;
+        line-height: 38px;
+        box-shadow: 0 2px 15px #0003;
+      }
+
+      .envelope:hover {
+        transform: translateY(-6px);
+        background: #392c4b;
+      }
+
+      .envelope small {
+        display: block;
+        font-size: 10px;
+        letter-spacing: 2px;
+        color: #baabcd;
+        margin: 17px 0 5px;
+      }
+
+      .envelope strong {
+        font: 21px Georgia,serif;
+        font-weight: normal;
+      }
+
+      .envelope i {
+        display: block;
+        font-size: 10px;
+        margin-top: 17px;
+        color: #ac99bf;
+        font-style: normal;
+      }
+
+      .ending {
+        text-align: center;
+        padding: 55px 22px 70px;
+      }
+
+      .ending p {
+        font: italic 24px/1.5 Georgia,serif;
+        color: #cbbadd;
+      }
+
+      .ending small {
+        color: #867b98;
+        font-size: 11px;
+      }
+
+      footer {
+        padding: 22px 6%;
+        border-top: 1px solid #fff1;
+        display: flex;
+        justify-content: space-between;
+        color: #897e9b;
+        font-size: 10px;
+      }
+
+      .cuddle {
+        position: fixed;
+        bottom: 22px;
+        right: 24px;
+        border: 1px solid #ad91cd66;
+        border-radius: 30px;
+        background: #282039eF;
+        color: #e9dbfa;
+        padding: 11px 19px;
+        box-shadow: 0 4px 30px #0004;
+        z-index: 5;
+        font-size: 12px;
+      }
+
+      dialog {
+        background: #211a32;
+        color: var(--ink);
+        border: 1px solid #77608f;
+        border-radius: 16px;
+        padding: 45px;
+        width: min(560px,calc(100% - 32px));
+        max-height: 85vh;
+        box-shadow: 0 30px 100px #0007;
+      }
+
+      dialog::backdrop {
+        background: #080611c9;
+        backdrop-filter: blur(9px);
+      }
+
+      .close {
+        position: absolute;
+        right: 16px;
+        top: 12px;
+        border: 0;
+        background: none;
+        color: #cbbadd;
+        font-size: 26px;
+        min-width: 40px;
+      }
+
+      .modal-icon {
+        font-size: 32px;
+        color: #dbc1ff;
+      }
+
+      .modal-title {
+        font: 33px/1.2 Georgia,serif;
+        margin: 15px 0 22px;
+      }
+
+      .modal-content p {
+        color: #cec2dc;
+        line-height: 1.9;
+      }
+
+      .modal-content .sign {
+        font: italic 23px Georgia,serif;
+        color: #e1c9fb;
+      }
+
+      .choices {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 20px 0;
+      }
+
+      .choices button,.next {
+        background: #3c2e50;
+        border: 1px solid #795e94;
+        border-radius: 25px;
+        color: #f3eaff;
+        padding: 10px 15px;
+        font-size: 12px;
+      }
+
+      .photo-slot {
+        aspect-ratio: 1.5;
+        background: radial-gradient(ellipse at bottom,#65517d,#31263f);
+        display: grid;
+        place-items: center;
+        border: 7px solid #ede2ed;
+        border-bottom-width: 28px;
+        transform: rotate(-3deg);
+        color: #e3caff;
+        margin: 25px auto 35px;
+        max-width: 300px;
+        font: italic 17px Georgia,serif;
+        position: relative;
+      }
+
+      .photo-slot:after {
+        content: 'su foto favorita, acá';
+        position: absolute;
+        bottom: -23px;
+        color: #665672;
+        font: 10px system-ui;
+      }
+
+      .demo-note {
+        font-size: 10px!important;
+        color: #9e8eb0!important;
+        border-top: 1px solid #fff1;
+        padding-top: 16px;
+        margin-top: 25px;
+      }
+
+      .heartburst {
+        position: fixed;
+        left: 50%;
+        top: 60%;
+        font-size: 30px;
+        color: #dec1ff;
+        pointer-events: none;
+        z-index: 20;
+        animation: fly 1.8s ease-out forwards;
+      }
+
+      @keyframes fly {
+        to {
+          transform: translate(var(--x),-230px) rotate(25deg);
+          opacity: 0;
+        }
+      }
+
+      @media(max-width:750px) {
+        header {
+          padding: 22px 6%;
+        }
+        header small {
+          font-size: 8px;
+          letter-spacing: 1px;
+        }
+        .brand {
+          font-size: 18px;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+          padding-top: 50px;
+          gap: 10px;
+        }
+        .hero h1 {
+          font-size: 57px;
+        }
+        .intro {
+          max-width: 360px;
+        }
+        .sky {
+          height: 430px;
+          max-width: 450px;
+          margin: auto;
+        }
+        .orbit {
+          width: 310px;
+          height: 310px;
+        }
+        .orbit.two {
+          width: 210px;
+          height: 210px;
+        }
+        .section {
+          padding-top: 45px;
+        }
+        .section-head {
+          display: block;
+        }
+        .section-head p {
+          margin-top: 15px;
+          max-width: none;
+        }
+        .envelopes {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+        .envelope {
+          min-height: 200px;
+        }
+        .section h2 {
+          font-size: 32px;
+        }
+        dialog {
+          padding: 34px 25px;
+        }
+        .cuddle {
+          right: 15px;
+          bottom: 15px;
+        }
+        footer {
+          padding-bottom: 85px;
+        }
+        .ending p {
+          font-size: 22px;
+        }
+      }
+
+      @media(prefers-reduced-motion:reduce) {
+        *,*:before,*:after {
+          animation: none!important;
+          transition: none!important;
+          scroll-behavior: auto!important;
+        }
+      }
+
+      header nav {
+        display: flex;
+        gap: 26px;
+      }
+
+      header nav a {
+        color: #d6c4e8;
+        text-decoration: none;
+        font-size: 12px;
+      }
+
+      .welcome {
+        text-align: center;
+        padding: 90px 22px 75px;
+      }
+
+      .welcome h1 {
+        font: normal clamp(44px,6vw,72px)/1.13 Georgia,serif;
+        letter-spacing: -2px;
+        margin: 22px 0;
+      }
+
+      .welcome h1 em {
+        font-weight: normal;
+        color: #cfb9fa;
+      }
+
+      .welcome p {
+        color: #b6abc8;
+        max-width: 400px;
+        margin: 0 auto;
+        line-height: 1.9;
+      }
+
+      .welcome .tiny-moon {
+        font-size: 36px;
+        color: #e9d9b6;
+        display: block;
+        margin-bottom: 25px;
+      }
+
+      .section {
+        scroll-margin-top: 20px;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .photo-card {
+        background: #ede4ef;
+        padding: 12px 12px 20px;
+        color: #594565;
+        transform: rotate(-2deg);
+        box-shadow: 0 12px 30px #0003;
+      }
+
+      .photo-card:nth-child(2) {
+        transform: rotate(2deg);
+      }
+
+      .photo-card:nth-child(3) {
+        transform: rotate(-1deg);
+      }
+
+      .photo-tile {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        aspect-ratio: 4/5;
+        background: linear-gradient(140deg,#594369,#30253f);
+        border: 0;
+        color: #d2bee1;
+        overflow: hidden;
+        padding: 0;
+      }
+
+      .photo-tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .photo-tile .empty {
+        padding: 20px;
+      }
+
+      .photo-tile .empty span {
+        font-size: 38px;
+        display: block;
+      }
+
+      .photo-tile .empty small {
+        font: italic 17px/1.5 Georgia,serif;
+        display: block;
+        margin-top: 15px;
+      }
+
+      .photo-caption {
+        text-align: center;
+        font: italic 18px Georgia,serif;
+        margin: 18px 0 4px;
+      }
+
+      .photo-change {
+        display: block;
+        text-align: center;
+        font-size: 10px;
+        color: #786581;
+        margin: 12px auto 0;
+        background: none;
+        border: 0;
+        text-decoration: underline;
+      }
+
+      .gallery-help {
+        color: #a28daf;
+        font-size: 11px;
+        margin-top: 40px;
+        text-align: center;
+      }
+
+      .big-photo {
+        display: block;
+        max-width: 100%;
+        max-height: 60vh;
+        margin: auto;
+        object-fit: contain;
+      }
+
+      .ending {
+        padding: 25px 20px 50px;
+      }
+
+      .ending p {
+        font-size: 21px;
+      }
+
+      footer {
+        padding-bottom: 22px;
+      }
+
+      .photo-navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        gap: 10px;
+      }
+
+      .photo-navigation button {
+        background: #3c2e50;
+        border: 1px solid #795e94;
+        border-radius: 25px;
+        color: #f3eaff;
+        padding: 10px 15px;
+        font-size: 12px;
+      }
+
+      @media(max-width:750px) {
+        header {
+          gap: 12px;
+        }
+        .brand {
+          font-size: 16px;
+        }
+        header nav {
+          gap: 15px;
+        }
+        .welcome {
+          padding: 60px 20px;
+        }
+        .welcome h1 {
+          font-size: 48px;
+        }
+        .gallery {
+          grid-template-columns: 1fr;
+          max-width: 340px;
+          margin: 35px auto;
+          gap: 35px;
+        }
+        .section-head p {
+          max-width: 320px;
+        }
+        .gallery-help {
+          max-width: 320px;
+          margin: 30px auto;
+        }
+        footer {
+          gap: 15px;
+          font-size: 9px;
+        }
+      }
+
+      .love-counter {
+        max-width: 790px;
+        margin: 0 auto 65px;
+        padding: 30px 24px;
+        text-align: center;
+        border-top: 1px solid #bda1df30;
+        border-bottom: 1px solid #bda1df30;
+      }
+
+      .love-counter h2 {
+        font-size: 29px;
+        margin: 10px 0 26px;
+      }
+
+      .counter-grid {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 16px;
+        max-width: 590px;
+        margin: auto;
+      }
+
+      .counter-value {
+        display: block;
+        font: normal 45px/1.2 Georgia,serif;
+        color: #e5d1fd;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .counter-unit {
+        display: block;
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #b5a3c7;
+        margin-top: 9px;
+      }
+
+      .counter-date {
+        font-size: 11px;
+        color: #b6a4c7;
+        margin: 25px 0 5px;
+      }
+
+      .counter-caption {
+        font: italic 16px Georgia,serif;
+        color: #cdb9dd;
+        margin-top: 13px;
+      }
+
+      .envelopes {
+        row-gap: 26px;
+      }
+
+      @media(max-width:750px) {
+        .love-counter {
+          margin: 0 6% 45px;
+          padding: 25px 8px;
+        }
+        .love-counter h2 {
+          font-size: 26px;
+        }
+        .counter-grid {
+          gap: 8px;
+        }
+        .counter-value {
+          font-size: 35px;
+        }
+        .counter-unit {
+          font-size: 8px;
+          letter-spacing: 1px;
+        }
+        .counter-date {
+          font-size: 10px;
+        }
+      }
+
+      .photo-card[hidden] {
+        display: none;
+      }
+
+      .gallery {
+        align-items: start;
+        gap: 35px 25px;
+      }
+
+      .photo-card:nth-child(3n+1) {
+        transform: rotate(-2deg);
+      }
+
+      .photo-card:nth-child(3n+2) {
+        transform: rotate(2deg);
+      }
+
+      .photo-card:nth-child(3n) {
+        transform: rotate(-1deg);
+      }
+
+      .photo-tile {
+        aspect-ratio: 4/5;
+        background: #e0d5e5;
+      }
+
+      .photo-tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .photo-tile:hover img {
+        filter: brightness(1.04);
+      }
+
+      .photo-caption {
+        font-size: 17px;
+        line-height: 1.4;
+        min-height: 48px;
+        display: grid;
+        place-items: center;
+      }
+
+      .album-controls {
+        text-align: center;
+        margin-top: 45px;
+      }
+
+      .album-controls p {
+        font-size: 11px;
+        letter-spacing: 1px;
+        color: #baa6cb;
+      }
+
+      .album-controls .primary {
+        margin-top: 6px;
+      }
+
+      .photo-dialog {
+        width: min(850px,calc(100% - 24px));
+        padding: 30px;
+        max-height: 95vh;
+      }
+
+      .photo-dialog .modal-icon {
+        display: none;
+      }
+
+      .photo-dialog .modal-title {
+        font-size: 24px;
+        margin: 8px 25px 20px 0;
+      }
+
+      .big-photo {
+        max-height: 60vh;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+      }
+
+      .photo-dialog #photo-position {
+        text-align: center;
+        font-size: 11px;
+        margin: 10px 0;
+      }
+
+      .photo-dialog .photo-navigation {
+        margin-top: 10px;
+      }
+
+      @media(max-width:750px) {
+        .photo-dialog {
+          padding: 25px 15px;
+        }
+        .photo-dialog .modal-title {
+          font-size: 21px;
+        }
+        .gallery {
+          gap: 30px;
+          max-width: 350px;
+        }
+      }
+
+      /* Additive final chapter and official music player. */
+
+      .our-music {
+        margin: 0 6% 65px;
+        padding: 30px;
+        border: 1px solid #b99bdc30;
+        border-radius: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1.15fr;
+        gap: 35px;
+        background: #231a343b;
+      }
+
+      .our-music h2 {
+        font-size: 30px;
+        margin: 12px 0 18px;
+      }
+
+      .music-intro p {
+        color: #c3b2d2;
+        font-size: 13px;
+      }
+
+      .music-label {
+        display: block;
+        font-size: 11px;
+        color: #baa6ca;
+        margin: 25px 0 8px;
+      }
+
+      #music-choice {
+        width: 100%;
+        max-width: 100%;
+        font: 12px system-ui;
+        color: #e5d6f2;
+        background: #21192e;
+        padding: 12px;
+        border: 1px solid #8e6baa75;
+        border-radius: 10px;
+      }
+
+      .music-status {
+        font-size: 11px!important;
+        line-height: 1.6;
+      }
+
+      .music-player-card {
+        min-width: 0;
+        align-self: center;
+        background: #171222;
+        border: 1px solid #84669450;
+        border-radius: 14px;
+        padding: 14px;
+      }
+
+      .music-heading {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 2px 2px 12px;
+      }
+
+      .music-heading strong {
+        font: 17px Georgia,serif;
+      }
+
+      .music-heading small {
+        display: block;
+        font-size: 10px;
+        color: #a995bc;
+        margin-top: 3px;
+      }
+
+      #music-heart {
+        font-size: 28px;
+        color: #e4cbf6;
+        display: block;
+      }
+
+      #music-heart.is-playing {
+        animation: slowLoveBeat 2.8s ease-in-out infinite;
+      }
+
+      .youtube-wrap {
+        width: 100%;
+        height: 250px;
+        min-height: 200px;
+        background: #241b32;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .youtube-wrap iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      #music-placeholder {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+      }
+
+      #music-placeholder span {
+        font-size: 35px;
+        color: #bba0d5;
+      }
+
+      #music-placeholder p {
+        font: italic 19px Georgia,serif;
+        color: #d6c3e4;
+      }
+
+      #music-placeholder small {
+        font-size: 10px;
+        color: #a894b8;
+      }
+
+      .music-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        padding: 14px 0 8px;
+      }
+
+      .music-controls button {
+        background: #3b2b4f;
+        border: 1px solid #78598e;
+        color: #f0e5f7;
+        border-radius: 20px;
+        padding: 8px 13px;
+        font-size: 11px;
+      }
+
+      .music-controls button:disabled {
+        opacity: .45;
+        cursor: default;
+      }
+
+      .music-controls label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #bda9cd;
+        font-size: 10px;
+      }
+
+      .music-controls input {
+        max-width: 100px;
+        accent-color: #c9a8ec;
+      }
+
+      .music-source {
+        font-size: 10px;
+        color: #c6aadf;
+      }
+
+      .forever-section {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        padding: 100px 6% 60px;
+        margin-top: 35px;
+        border-top: 1px solid #c5a7e531;
+        background: radial-gradient(ellipse at 50% 10%,#57376335,transparent 60%);
+        scroll-margin-top: 20px;
+      }
+
+      .forever-heading {
+        text-align: center;
+        margin: 0 auto 60px;
+      }
+
+      .forever-heading h2 {
+        font-size: clamp(35px,5vw,56px);
+        margin: 22px 0;
+        color: #f0e3f9;
+        line-height: 1.2;
+      }
+
+      .beating-heart {
+        width: 64px;
+        margin: 0 auto 30px;
+        color: #e7cced;
+        filter: drop-shadow(0 0 25px #d8ade74d);
+        animation: slowLoveBeat 3.8s ease-in-out infinite;
+      }
+
+      .beating-heart svg,.last-heart svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .forever-line {
+        height: 1px;
+        background: linear-gradient(90deg,transparent,#c7a7df80,transparent);
+        width: 150px;
+        margin: 30px auto;
+      }
+
+      .forever-letter {
+        max-width: 690px;
+        margin: auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .forever-letter p {
+        font-size: 17px;
+        line-height: 2.05;
+        color: #d5c7df;
+        margin: 0 0 32px;
+      }
+
+      .forever-letter strong {
+        font-weight: 500;
+        color: #f0dff8;
+      }
+
+      .forever-letter .love-emphasis {
+        font: normal 24px/1.65 Georgia,serif;
+        text-align: center;
+        margin: 50px -12px;
+        padding: 30px 20px;
+        border-top: 1px solid #bfa1d028;
+        border-bottom: 1px solid #bfa1d028;
+        background: linear-gradient(90deg,transparent,#b08bd00a,transparent);
+      }
+
+      .forever-letter .love-emphasis:last-child {
+        border: 0;
+        margin-bottom: 0;
+      }
+
+      .floating-love {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .floating-love span {
+        position: absolute;
+        left: var(--left);
+        bottom: -40px;
+        font-size: 22px;
+        color: #d2b2e5;
+        opacity: 0;
+        animation: floatLove var(--duration) linear var(--delay) infinite;
+        animation-play-state: paused;
+      }
+
+      .forever-section.in-view .floating-love span,.last-embrace.in-view .floating-love span {
+        animation-play-state: running;
+      }
+
+      .last-embrace {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        min-height: 85svh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 90px 8% 110px;
+        text-align: center;
+        background: radial-gradient(ellipse at center,#56396235,transparent 70%);
+      }
+
+      .last-heart {
+        width: 100px;
+        color: #ead3ed;
+        margin-bottom: 50px;
+        filter: drop-shadow(0 0 35px #e1b8ec60);
+      }
+
+      .last-embrace.in-view .last-heart {
+        animation: slowLoveBeat 3.8s ease-in-out infinite;
+      }
+
+      .last-quote {
+        max-width: 830px;
+        font: normal clamp(26px,3.6vw,44px)/1.5 Georgia,serif;
+        color: #f1e3f8;
+        margin: 0 auto 35px;
+        text-wrap: pretty;
+      }
+
+      .last-sign {
+        font: italic clamp(20px,2.5vw,29px)/1.6 Georgia,serif;
+        color: #d9bfe9;
+        max-width: 650px;
+        margin: 0;
+      }
+
+      .reveal-enabled .gentle-reveal {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 1.1s ease,transform 1.1s ease;
+      }
+
+      .reveal-enabled .gentle-reveal.revealed {
+        opacity: 1;
+        transform: none;
+      }
+
+      .reveal-enabled .last-quote,.reveal-enabled .last-sign {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 1.5s ease,transform 1.5s ease;
+      }
+
+      .reveal-enabled .last-embrace.revealed .last-quote {
+        opacity: 1;
+        transform: none;
+        transition-delay: .5s;
+      }
+
+      .reveal-enabled .last-embrace.revealed .last-sign {
+        opacity: 1;
+        transform: none;
+        transition-delay: 1.5s;
+      }
+
+      .final-letter-link {
+        display: block;
+        text-align: center;
+        margin: 25px auto 5px;
+        max-width: 340px;
+      }
+
+      .letter-finale-hint {
+        text-align: center;
+        font-size: 11px;
+        color: #b59acb;
+        margin-top: 25px;
+      }
+
+      @keyframes slowLoveBeat {
+        0%,100% {
+          transform: scale(1);
+        }
+        35% {
+          transform: scale(1.065);
+        }
+        55% {
+          transform: scale(1);
+        }
+        70% {
+          transform: scale(1.035);
+        }
+      }
+
+      @keyframes floatLove {
+        0% {
+          transform: translateY(0) rotate(-8deg);
+          opacity: 0;
+        }
+        12% {
+          opacity: .13;
+        }
+        85% {
+          opacity: .09;
+        }
+        100% {
+          transform: translateY(-120vh) rotate(12deg);
+          opacity: 0;
+        }
+      }
+
+      @media(max-width:750px) {
+        .our-music {
+          grid-template-columns: 1fr;
+          padding: 20px 15px;
+          gap: 20px;
+        }
+        .our-music h2 {
+          font-size: 28px;
+        }
+        .youtube-wrap {
+          height: 220px;
+        }
+        .music-player-card {
+          padding: 10px;
+        }
+        .forever-section {
+          padding: 75px 7% 30px;
+        }
+        .forever-letter p {
+          font-size: 16px;
+          line-height: 1.95;
+          margin-bottom: 28px;
+        }
+        .forever-letter .love-emphasis {
+          font-size: 22px;
+          margin: 35px 0;
+          padding: 25px 5px;
+        }
+        .forever-heading {
+          margin-bottom: 40px;
+        }
+        .last-embrace {
+          padding: 75px 7% 100px;
+          min-height: 90svh;
+        }
+        .last-heart {
+          width: 80px;
+          margin-bottom: 35px;
+        }
+        .last-quote {
+          font-size: 28px;
+        }
+        .music-controls {
+          gap: 8px;
+        }
+      }
+
+      @media(prefers-reduced-motion:reduce) {
+        .reveal-enabled .gentle-reveal,.reveal-enabled .last-quote,.reveal-enabled .last-sign {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        .floating-love {
+          display: none;
+        }
+      }
+
+      .audio-only {
+        align-items: center;
+      }
+
+      .audio-only .music-player-card {
+        padding: 16px;
+      }
+
+      .audio-only #spotify-wrap {
+        min-height: 152px;
+        max-width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .audio-only iframe {
+        width: 100%;
+        height: 152px;
+        display: block;
+        border: 0;
+      }
+
+      .audio-only .music-heading {
+        padding-bottom: 16px;
+      }
+
+      .audio-only .music-controls {
+        padding-top: 12px;
+      }
+
+      .audio-only .music-status {
+        margin: 10px 0;
+        font-size: 11px;
+        line-height: 1.6;
+      }
+
+      @media(max-width:750px) {
+        .audio-only {
+          padding: 22px 12px;
+        }
+        .audio-only .music-player-card {
+          padding: 10px;
+        }
+        .audio-only .music-intro {
+          padding: 0 4px;
+        }
+      }
+
+      .native-music .music-player-card {
+        padding: 24px;
+      }
+
+      .sound-bars {
+        height: 75px;
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        gap: 5px;
+        padding-bottom: 12px;
+      }
+
+      .sound-bars i {
+        height: var(--h);
+        width: 5px;
+        max-height: 60px;
+        background: linear-gradient(#ead6f5,#ac86ca);
+        border-radius: 3px;
+        transform-origin: bottom;
+        animation: audioWave 1.1s ease-in-out var(--d) infinite alternate;
+        animation-play-state: paused;
+      }
+
+      .playing .sound-bars i {
+        animation-play-state: running;
+      }
+
+      .music-seek {
+        width: 100%;
+        accent-color: #cfb9fa;
+        margin: 14px 0 0;
+        cursor: pointer;
+      }
+
+      .audio-times {
+        display: flex;
+        justify-content: space-between;
+        color: #baa4cb;
+        font-size: 11px;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .native-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        margin: 15px 0;
+      }
+
+      .native-controls button {
+        background: none;
+        border: 0;
+        color: #dfc7f2;
+        font-size: 22px;
+        width: 46px;
+        height: 46px;
+      }
+
+      .native-controls .main-play {
+        background: #cfb9fa;
+        color: #261735;
+        border-radius: 50%;
+        width: 54px;
+        height: 54px;
+        font-size: 24px;
+      }
+
+      .native-volume {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        color: #bda9ce;
+        font-size: 11px;
+      }
+
+      .native-volume input {
+        width: 110px;
+        accent-color: #cfb9fa;
+      }
+
+      .native-music #music-status {
+        text-align: center;
+        min-height: 18px;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      @keyframes audioWave {
+        from {
+          transform: scaleY(.4);
+        }
+        to {
+          transform: scaleY(1);
+        }
+      }
+
+      @media(max-width:750px) {
+        .native-music .music-player-card {
+          padding: 20px 16px;
+        }
+        .sound-bars {
+          gap: 4px;
+        }
+        .sound-bars i {
+          width: 4px;
+        }
+      }
+
+      @media(prefers-reduced-motion:reduce) {
+        .sound-bars i {
+          animation: none;
+        }
+      }
+
+      .our-music.native-music {
+        display: block;
+        padding: 0;
+        border: 0;
+        background: transparent;
+      }
+
+      .native-music .music-player-card {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .native-music .sound-bars {
+        gap: clamp(4px,1.4vw,16px);
+      }
+
+      /* Romantic Paris: Ladybug red, warm paper, and a midnight finale. */
+
+      :root {
+        color-scheme: light;
+        --ink: #30262a;
+        --muted: #786865;
+        --lilac: #ad3343;
+      }
+
+      body {
+        background: #f7f0e6;
+      }
+
+      body:before {
+        background: radial-gradient(ellipse at 10% 10%,#d8b3a91a,transparent 50%);
+      }
+
+      #stars {
+        opacity: .25;
+      }
+
+      .speck {
+        background: #a97c60;
+      }
+
+      header {
+        border-color: #ad334325;
+      }
+
+      .brand span,header nav a {
+        color: #a52f40;
+      }
+
+      header nav a:hover {
+        color: #30262a;
+      }
+
+      .welcome {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        padding-bottom: 105px;
+      }
+
+      .welcome h1 em {
+        color: #a82e40;
+      }
+
+      .welcome p {
+        color: #786865;
+      }
+
+      .tiny-moon img {
+        width: 45px;
+        height: 45px;
+        transform: rotate(-12deg);
+      }
+
+      .paris-hero {
+        position: absolute;
+        z-index: -1;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 250px;
+        background: url('decor/paris.svg') bottom center/100% auto no-repeat;
+        opacity: .28;
+        pointer-events: none;
+      }
+
+      .welcome .primary {
+        position: relative;
+        z-index: 1;
+      }
+
+      .primary {
+        background: #ae3445;
+        border-color: #ae3445;
+        color: #fff7ee;
+        box-shadow: 0 5px 14px #8b243b16;
+      }
+
+      .primary:hover {
+        background: #942739;
+      }
+
+      .section {
+        border-color: #af8d742e;
+      }
+
+      .eyebrow {
+        color: #a13442;
+      }
+
+      .love-counter {
+        border-color: #bda58a66;
+        margin-top: 10px;
+      }
+
+      .counter-value {
+        color: #a72f40;
+      }
+
+      .counter-unit,.counter-date {
+        color: #786865;
+      }
+
+      .counter-caption {
+        color: #9d5260;
+      }
+
+      .envelope {
+        color: #382c2c;
+        background: #fffaf2;
+        border: 1px solid #d9c5b3;
+        border-radius: 5px;
+        padding-top: 112px;
+        box-shadow: 0 8px 20px #52322508;
+        perspective: 600px;
+      }
+
+      .envelope:before {
+        height: 100px;
+        background: #eee0cf;
+        border-top: 0;
+        transform-origin: top;
+        transition: transform .45s ease,background .4s;
+        z-index: 1;
+      }
+
+      .envelope:after {
+        content: '';
+        width: 43px;
+        height: 46px;
+        top: 73px;
+        left: calc(50% - 21px);
+        background: url('decor/ladybug.svg') center/contain no-repeat;
+        border-radius: 0;
+        box-shadow: none;
+        z-index: 2;
+        transition: transform .4s,opacity .3s;
+      }
+
+      .envelope:hover {
+        background: #fffdf8;
+        box-shadow: 0 14px 30px #52322512;
+      }
+
+      .envelope small {
+        color: #9d625d;
+        font-size: 9px;
+      }
+
+      .envelope strong {
+        color: #542f34;
+      }
+
+      .envelope i {
+        color: #9a7c71;
+      }
+
+      .envelope.is-opening:before {
+        transform: rotateX(165deg);
+        background: #e5cfb9;
+      }
+
+      .envelope.is-opening:after {
+        transform: translateY(-28px) rotate(-18deg);
+        opacity: 0;
+      }
+
+      .envelope.is-opening {
+        transform: translateY(-5px);
+      }
+
+      .envelope:focus-visible {
+        outline-color: #ae3445;
+      }
+
+      dialog {
+        background: #fff9ef;
+        color: #382c2c;
+        border: 1px solid #d6bba4;
+        box-shadow: 0 30px 100px #30202644;
+      }
+
+      dialog::backdrop {
+        background: #211b24b8;
+      }
+
+      .modal-content p {
+        color: #665550;
+      }
+
+      .modal-icon,.modal-content .sign,.close {
+        color: #a52f40;
+      }
+
+      .choices button,.next,.photo-navigation button {
+        background: #ae3445;
+        border-color: #ae3445;
+        color: #fff8ed;
+      }
+
+      .demo-note {
+        color: #917870!important;
+        border-color: #bca28b44;
+      }
+
+      .heartburst {
+        color: #ae3445;
+      }
+
+      #fotos {
+        position: relative;
+        background: linear-gradient(#efe3d333,#efe3d366);
+      }
+
+      #fotos .section-head:after {
+        content: '';
+        display: block;
+        width: 95px;
+        height: 90px;
+        background: url('decor/paris.svg') center bottom/400px auto no-repeat;
+        flex-shrink: 0;
+        opacity: .8;
+      }
+
+      .photo-card {
+        position: relative;
+        background: #fffbf3;
+        box-shadow: 0 9px 22px #3825221a;
+        color: #74494a;
+      }
+
+      .photo-card:before {
+        content: '♡';
+        position: absolute;
+        top: -13px;
+        right: 20px;
+        width: 38px;
+        height: 28px;
+        text-align: center;
+        background: #c54b5650;
+        color: #9d293c;
+        transform: rotate(8deg);
+        z-index: 1;
+      }
+
+      .photo-card:nth-child(3n):before {
+        background: #c7b29266;
+        color: #66504a;
+        transform: rotate(-10deg);
+      }
+
+      .photo-tile {
+        background: #e9dfd1;
+      }
+
+      .album-controls p,.gallery-help {
+        color: #8b6e66;
+      }
+
+      .ending p {
+        color: #9d5260;
+      }
+
+      .ending small,footer {
+        color: #917b6c;
+      }
+
+      .native-music .music-player-card {
+        position: relative;
+        overflow: hidden;
+        background: #fffaf2;
+        border-color: #d8c3b0;
+        border-radius: 20px;
+        box-shadow: 0 8px 30px #673d2810;
+      }
+
+      .native-music .music-player-card:before {
+        content: '';
+        position: absolute;
+        right: -22px;
+        top: -25px;
+        width: 130px;
+        height: 100px;
+        background: radial-gradient(circle,#38262d 2px,transparent 2.5px) 0 0/19px 19px;
+        opacity: .1;
+        transform: rotate(18deg);
+        pointer-events: none;
+      }
+
+      .music-heading strong {
+        color: #563237;
+      }
+
+      .music-heading small,.audio-times,.native-volume {
+        color: #8a6c64;
+      }
+
+      #music-heart {
+        color: #b23d4e;
+      }
+
+      .native-music .sound-bars i {
+        background: linear-gradient(#d5a29b,#ae3445);
+      }
+
+      .music-seek,.native-volume input {
+        accent-color: #ae3445;
+      }
+
+      .native-controls button {
+        color: #654045;
+      }
+
+      .native-controls .main-play {
+        position: relative;
+        background: radial-gradient(circle at 22% 26%,#37252c 3px,transparent 4px),radial-gradient(circle at 79% 28%,#37252c 3px,transparent 4px),radial-gradient(circle at 23% 78%,#37252c 3px,transparent 4px),radial-gradient(circle at 78% 77%,#37252c 3px,transparent 4px),#b73347;
+        color: #fff9ed;
+        box-shadow: 0 0 0 4px #fffaf2,0 0 0 6px #b73347;
+        width: 62px;
+        height: 62px;
+      }
+
+      .native-controls {
+        margin: 22px 0;
+      }
+
+      .music-status {
+        color: #8b6d65;
+      }
+
+      .forever-section {
+        background: #231e29;
+        border-color: #b84654;
+        color: #fff3e2;
+      }
+
+      .forever-heading .eyebrow {
+        color: #d6a18e;
+      }
+
+      .forever-heading h2 {
+        color: #fff1df;
+      }
+
+      .beating-heart,.last-heart {
+        color: #d86776;
+        filter: drop-shadow(0 0 25px #cf627738);
+      }
+
+      .forever-line {
+        background: linear-gradient(90deg,transparent,#b88572,transparent);
+      }
+
+      .forever-letter p {
+        color: #dbcfcc;
+      }
+
+      .forever-letter strong {
+        color: #f7deca;
+      }
+
+      .forever-letter .love-emphasis {
+        border-color: #c9857833;
+        background: linear-gradient(90deg,transparent,#d18c7c09,transparent);
+      }
+
+      .floating-love span {
+        color: #d89498;
+      }
+
+      .last-embrace {
+        background: radial-gradient(ellipse at 50% 25%,#51313d55,transparent 65%),#231e29;
+        padding-bottom: 235px;
+      }
+
+      .last-embrace:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 250px;
+        background: url('decor/paris.svg') bottom center/cover no-repeat;
+        opacity: .45;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .last-embrace:before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: radial-gradient(circle at 12% 20%,#f5d2a8 1px,transparent 2px),radial-gradient(circle at 85% 16%,#f5d2a8 1px,transparent 2px),radial-gradient(circle at 72% 54%,#f5d2a8 1px,transparent 2px),radial-gradient(circle at 22% 56%,#f5d2a8 1px,transparent 2px);
+      }
+
+      .last-quote {
+        color: #f7e8dc;
+      }
+
+      .last-sign {
+        color: #d7a7a5;
+      }
+
+      .team-charms {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        margin-bottom: 35px;
+      }
+
+      .team-charms img {
+        width: 49px;
+        height: 49px;
+        padding: 6px;
+        background: #f6e9d6;
+        border-radius: 50%;
+        border: 1px solid #ddc5a6;
+        box-shadow: 0 0 25px #ca8f7120;
+      }
+
+      .team-charms span {
+        color: #dd9c9e;
+        font: 24px Georgia,serif;
+      }
+
+      .last-heart {
+        width: 75px;
+      }
+
+      @media(max-width:750px) {
+        .welcome {
+          padding-bottom: 100px;
+        }
+        .paris-hero {
+          background-size: 780px auto;
+          height: 180px;
+        }
+        .welcome h1 {
+          font-size: 45px;
+        }
+        #fotos .section-head:after {
+          position: absolute;
+          right: 7%;
+          top: 37px;
+          width: 55px;
+          height: 70px;
+          background-size: 320px auto;
+          opacity: .35;
+        }
+        .last-embrace {
+          padding-bottom: 180px;
+        }
+        .last-embrace:after {
+          height: 180px;
+          background-size: 780px auto;
+        }
+        .native-music .sound-bars {
+          gap: 7px;
+        }
+        .native-music .music-player-card {
+          padding: 22px 18px;
+        }
+      }
+
+      /* Little Miraculous discoveries. */
+
+      #cartitas,#fotos {
+        position: relative;
+      }
+
+      .kwami {
+        position: absolute;
+        right: 6%;
+        top: -32px;
+        width: 72px;
+        height: 96px;
+        pointer-events: none;
+        z-index: 1;
+        transform: rotate(10deg);
+        filter: drop-shadow(0 6px 8px #40242b16);
+      }
+
+      .kwami img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .kwami span {
+        position: absolute;
+        right: -13px;
+        top: 12px;
+        font-size: 23px;
+        color: #b89466;
+      }
+
+      .kwami-plagg {
+        transform: rotate(-9deg);
+        top: -44px;
+      }
+
+      .counter-charms {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 17px;
+        color: #42363c;
+      }
+
+      .counter-charms img,.counter-charms svg {
+        width: 26px;
+        height: 29px;
+      }
+
+      .counter-charms span {
+        font-size: 19px;
+        color: #ad3445;
+      }
+
+      .yoyo-thread {
+        position: absolute;
+        inset: 12px;
+        width: calc(100% - 24px);
+        height: calc(100% - 24px);
+        pointer-events: none;
+        opacity: .13;
+        fill: none;
+        stroke: #ae3445;
+        stroke-width: 1.5;
+        vector-effect: non-scaling-stroke;
+      }
+
+      .native-music .music-player-card>:not(.yoyo-thread) {
+        position: relative;
+      }
+
+      .native-music .music-player-card:before {
+        z-index: 0;
+      }
+
+      .lucky-charm {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        width: 62px;
+        height: 52px;
+        background: none;
+        border: 0;
+        margin: 0 auto 8px;
+        transform: rotate(-15deg);
+        transition: transform .3s;
+      }
+
+      .lucky-charm span {
+        color: #b99965;
+        font-size: 17px;
+      }
+
+      .lucky-charm:hover {
+        transform: rotate(8deg) scale(1.12);
+      }
+
+      .lucky-reveal {
+        text-align: center;
+        padding: 22px 0 10px;
+      }
+
+      .lucky-reveal img {
+        width: 75px;
+        height: 75px;
+        margin: 0 auto 20px;
+        animation: slowLoveBeat 3s ease-in-out infinite;
+      }
+
+      .modal-content .lucky-quote {
+        font: italic 28px/1.5 Georgia,serif;
+        color: #a72f40;
+        margin: 12px 0;
+      }
+
+      .rooftop-duo {
+        position: absolute;
+        bottom: 42px;
+        right: 15%;
+        width: 160px;
+        height: auto;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .last-embrace:after {
+        opacity: .65;
+      }
+
+      @media(max-width:750px) {
+        .kwami {
+          width: 53px;
+          height: 72px;
+          top: -25px;
+          right: 8%;
+        }
+        .kwami-plagg {
+          top: -32px;
+        }
+        .rooftop-duo {
+          width: 125px;
+          bottom: 27px;
+          right: 7%;
+        }
+        .yoyo-thread {
+          opacity: .09;
+        }
+      }
+
+      /* Keep the figures and their building anchored as one illustration. */
+
+      .last-embrace .rooftop-duo {
+        bottom: 0;
+        width: 160px;
+        height: auto;
+      }
+
+      @media(max-width:750px) {
+        .last-embrace .rooftop-duo {
+          bottom: 0;
+          width: 125px;
+        }
+      }
+
+      /* =========================================================
+         POSTAL DE MIRACULOUS
+         La imagen se puede reemplazar en decor/ sin tocar el resto.
+         ========================================================= */
+      .miraculous-feature {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.9fr);
+        margin: 0 6% 65px;
+        overflow: hidden;
+        border: 1px solid #ddc5b4;
+        border-radius: 22px;
+        background: #fffaf2;
+        box-shadow: 0 16px 42px #4a2b2516;
+      }
+
+      .miraculous-feature__image {
+        position: relative;
+        min-height: 345px;
+        margin: 0;
+        overflow: hidden;
+        background: #b67971;
+      }
+
+      .miraculous-feature__image img {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 53%;
+      }
+
+      .miraculous-feature__copy {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 38px clamp(25px, 4.1vw, 58px);
+      }
+
+      .miraculous-feature__copy .eyebrow {
+        color: #ad3343;
+        letter-spacing: 2.2px;
+      }
+
+      .miraculous-feature__copy h2 {
+        margin: 18px 0;
+        color: #59343b;
+        font: normal clamp(28px, 3.3vw, 43px)/1.17 Georgia, serif;
+      }
+
+      .miraculous-feature__copy h2 em {
+        color: #a93446;
+        font-weight: normal;
+      }
+
+      .miraculous-feature__copy p {
+        max-width: 32ch;
+        margin: 0;
+        color: #816b66;
+        font-size: 13px;
+        line-height: 1.9;
+      }
+
+      .miraculous-feature__charms {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 27px;
+      }
+
+      .miraculous-feature__charms img {
+        width: 31px;
+        height: 31px;
+        object-fit: contain;
+      }
+
+      .miraculous-feature__charms span {
+        color: #bd6270;
+        font: 23px Georgia, serif;
+      }
+
+      @media (max-width: 750px) {
+        .miraculous-feature {
+          grid-template-columns: 1fr;
+          margin-bottom: 47px;
+        }
+
+        .miraculous-feature__image {
+          min-height: 0;
+          aspect-ratio: 3/2;
+        }
+
+        .miraculous-feature__copy {
+          padding: 27px 27px 30px;
+        }
+
+        .miraculous-feature__copy h2 {
+          font-size: 32px;
+          margin: 12px 0;
+        }
+
+        .miraculous-feature__charms {
+          margin-top: 18px;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="stars" aria-hidden="true"></div>
+    <header>
+      <div class="brand"><span>♡</span> para vos, mi amor</div>
+      <nav aria-label="Apartados"><a href="#cartitas">Cartitas</a><a href="#fotos">Nuestras fotos</a></nav>
+    </header>
+    <main>
+      <div class="welcome">
+        <div class="paris-hero" aria-hidden="true"></div>
+        <span class="tiny-moon" aria-hidden="true"><img src="decor/ladybug.svg" alt=""></span>
+        <div class="eyebrow">Para el amor de mi vida...</div>
+        <h1>Un lugarcito para<br><em>sentirnos cerquita.</em></h1>
+        <p>Unas palabras para abrazarte.<br>Y nuestras fotos, para volver a esos momentos.</p>
+        <a href="#cartitas" class="primary">Abrí una cartita <span>♡</span></a>
+      </div>
+      <!-- Un pedacito de Miraculous, justo después de la bienvenida -->
+      <section class="miraculous-feature" aria-label="Un pedacito de Miraculous en París">
+        <figure class="miraculous-feature__image">
+          <img
+            src="decor/ladybug-chatnoir-atardecer.webp"
+            alt="Ladybug y Chat Noir, juntitos y de la mano sobre un tejado de París, mirando la Torre Eiffel al atardecer."
+            width="1536"
+            height="1024"
+            loading="lazy"
+            decoding="async"
+          >
+        </figure>
+        <div class="miraculous-feature__copy">
+          <div class="eyebrow">Un poquito de magia en París</div>
+          <h2>Si la aventura<br>es con vos,<br><em>todo brilla más.</em></h2>
+          <p>Hasta entre los techitos de París hay momentos que se sienten como un abrazo. ♡</p>
+          <div class="miraculous-feature__charms" aria-hidden="true">
+            <img src="decor/ladybug.svg" alt="">
+            <span>♡</span>
+            <img src="decor/cat.svg" alt="">
+          </div>
+        </div>
+      </section>
+      <section id="nuestra-musica" class="our-music audio-only native-music" aria-label="Reproductor de música">
+        <div class="music-player-card">
+          <svg class="yoyo-thread" viewBox="0 0 1000 350" preserveAspectRatio="none" aria-hidden="true"><path d="M60 300C-20 155 140 58 240 95S390 260 500 80C620-35 735 105 633 174L500 262 375 174C275 94 385-25 500 80M633 174Q870 18 950 150T920 325"/></svg>
+          <div class="music-heading">
+            <span id="music-heart" aria-hidden="true">♡</span>
+            <div><strong id="music-track">Cicatrices</strong><small id="music-artists">Airbag</small></div>
+          </div>
+          <div class="sound-bars" aria-hidden="true"><i style="--h:12px;--d:0.0s"></i><i style="--h:22px;--d:0.17s"></i><i style="--h:35px;--d:0.34s"></i><i style="--h:18px;--d:0.51s"></i><i style="--h:48px;--d:0.68s"></i><i style="--h:60px;--d:0.0s"></i><i style="--h:25px;--d:0.17s"></i><i style="--h:12px;--d:0.34s"></i><i style="--h:38px;--d:0.51s"></i><i style="--h:20px;--d:0.68s"></i><i style="--h:15px;--d:0.0s"></i><i style="--h:52px;--d:0.17s"></i><i style="--h:44px;--d:0.34s"></i><i style="--h:32px;--d:0.51s"></i><i style="--h:21px;--d:0.68s"></i><i style="--h:28px;--d:0.0s"></i><i style="--h:38px;--d:0.17s"></i><i style="--h:22px;--d:0.34s"></i><i style="--h:17px;--d:0.51s"></i><i style="--h:45px;--d:0.68s"></i><i style="--h:55px;--d:0.0s"></i><i style="--h:28px;--d:0.17s"></i></div>
+          
+          <input aria-label="Adelantar o retroceder" id="music-seek" class="music-seek" type="range" min="0" max="100" step="0.1" value="0" disabled>
+          <div class="audio-times"><span id="music-elapsed">0:00</span><span id="music-duration">—:—</span></div>
+          <div class="native-controls">
+            <button id="music-previous" aria-label="Canción anterior">⏮</button>
+            <button id="music-toggle" class="main-play" aria-label="Reproducir música">▶</button>
+            <button id="music-next" aria-label="Siguiente canción">⏭</button>
+          </div>
+          <label class="native-volume" for="music-volume">Volumen <input id="music-volume" type="range" min="0" max="100" value="45"></label>
+          <p id="music-status" class="music-status" role="status">Tocá play para empezar. ♡</p>
+          <audio id="love-audio" preload="metadata"></audio>
+        </div>
+      </section>
+      <div class="love-counter" aria-label="Tiempo que llevamos de novios">
+        <div class="counter-charms" aria-hidden="true"><img src="decor/ladybug.svg" alt=""><span>♡</span><svg viewBox="0 0 48 48" aria-hidden="true"><g fill="currentColor"><ellipse cx="11" cy="18" rx="5" ry="7" transform="rotate(-25 11 18)"/><ellipse cx="21" cy="10" rx="5" ry="7"/><ellipse cx="33" cy="12" rx="5" ry="7" transform="rotate(15 33 12)"/><ellipse cx="40" cy="23" rx="5" ry="7" transform="rotate(30 40 23)"/><path d="M13 33c0-13 21-16 23-2 8 15-9 6-12 8-11 5-17 0-11-6Z"/></g></svg></div>
+        <div class="eyebrow">Desde que elegimos ser nosotros</div>
+        <h2>Y el tiempo sigue sumando…</h2>
+        <div class="counter-grid" role="timer" aria-live="off">
+          <div><span class="counter-value" id="count-days">—</span><span class="counter-unit">días</span></div>
+          <div><span class="counter-value" id="count-hours">—</span><span class="counter-unit">horas</span></div>
+          <div><span class="counter-value" id="count-minutes">—</span><span class="counter-unit">minutos</span></div>
+          <div><span class="counter-value" id="count-seconds">—</span><span class="counter-unit">segundos</span></div>
+        </div>
+        <p class="counter-date">Juntos desde el <time datetime="2025-07-30T17:35:00-03:00">30 de julio de 2025 · 17:35</time> (Argentina)</p>
+        <p class="counter-caption">Mi parte favorita del tiempo es compartirlo con vos. ♡</p>
+      </div>
+      <section id="cartitas" class="section">
+        <div class="kwami kwami-tikki"><img src="decor/tikki.svg" alt="Tikki" width="72" height="96" loading="lazy"><span aria-hidden="true">✧</span></div>
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">01 / Cartitas que abrazan</div>
+            <h2>Abrí esto cuando…</h2>
+          </div>
+          <p>No importa la hora ni el día.<br>Acá siempre hay un poquito de mí para vos.</p>
+        </div>
+        <div class="envelopes">
+          <button class="envelope" data-letter="miss"><small>PARA ESTAR CERQUITA</small><strong>me extrañes</strong><i>Tocá para abrir ↗</i></button>
+          <button class="envelope" data-letter="hard"><small>PARA BAJAR UN CAMBIO</small><strong>tengas un día difícil</strong><i>Tocá para abrir ↗</i></button>
+          <button class="envelope" data-letter="love"><small>POR SI TE LO OLVIDÁS</small><strong>necesites sentirte amada</strong><i>Tocá para abrir ↗</i></button>
+          <button class="envelope" data-letter="sleep"><small>PARA TERMINAR EL DÍA</small><strong>no puedas dormir</strong><i>Tocá para abrir ↗</i></button>
+          <button class="envelope" data-letter="doubt"><small>PARA ACORDARTE DE VOS</small><strong>dudes de vos misma</strong><i>Tocá para abrir ↗</i></button>
+          <button class="envelope" data-letter="hug"><small>UN ABRAZO EN PAPEL</small><strong>necesites un abrazo</strong><i>Tocá para abrir ↗</i></button>
+          <button class="envelope" data-letter="happy"><small>PARA CELEBRAR CON VOS</small><strong>te pase algo lindo</strong><i>Tocá para abrir ↗</i></button>
+          <button class="envelope" data-letter="tired"><small>UN PERMISITO PARA PARAR</small><strong>estés agotada</strong><i>Tocá para abrir ↗</i></button>
+          <button class="envelope" data-letter="smile"><small>UNA DOSIS DE CARIÑO</small><strong>quieras sonreír</strong><i>Tocá para abrir ↗</i></button>
+          <button class="envelope" data-letter="future"><small>PASITO A PASITO</small><strong>te dé miedo el futuro</strong><i>Tocá para abrir ↗</i></button>
+          <button class="envelope" data-letter="apart"><small>PARA VOLVER A ENCONTRARNOS</small><strong>estemos peleados</strong><i>Tocá para abrir ↗</i></button>
+          <button class="envelope" data-letter="just"><small>SIN NINGUNA EXCUSA</small><strong>quieras abrir una porque sí</strong><i>Tocá para abrir ↗</i></button>
+          <button class="envelope" data-letter="sorry"><small>PARA HACERME CARGO</small><strong>necesites una disculpa</strong><i>Tocá para abrir ↗</i></button>
+          <button class="envelope" data-letter="lonely"><small>PARA HACERTE COMPAÑÍA</small><strong>te sientas solita</strong><i>Tocá para abrir ↗</i></button>
+          <button class="envelope" data-letter="cry"><small>SIN TENER QUE DISIMULAR</small><strong>tengas ganas de llorar</strong><i>Tocá para abrir ↗</i></button>
+          <button class="envelope" data-letter="see"><small>CONTANDO LOS ABRAZOS PENDIENTES</small><strong>quieras que ya nos veamos</strong><i>Tocá para abrir ↗</i></button>
+          <button class="envelope" data-letter="proud"><small>PARA MIRAR TODO TU CAMINO</small><strong>quieras saber por qué te admiro</strong><i>Tocá para abrir ↗</i></button>
+          <button class="envelope" data-letter="us"><small>PARA VOLVER AL COMIENZO</small><strong>quieras recordar lo nuestro</strong><i>Tocá para abrir ↗</i></button>
+        </div>
+      </section>
+      <section id="fotos" class="section">
+        <div class="kwami kwami-plagg"><img src="decor/plagg.svg" alt="Plagg" width="72" height="96" loading="lazy"><span aria-hidden="true">✧</span></div>
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">02 / Momentitos nuestros</div>
+            <h2>Nuestras fotos</h2>
+          </div>
+          <p>De todas las cosas que quiero guardar,<br>mis favoritas son con vos.</p>
+        </div>
+        <div class="gallery" id="album-gallery">
+          <div class="photo-card">
+            <button class="photo-tile" data-photo="0" aria-label="Ampliar foto 1: Nuestra graduación. Qué lindo compartir ese día con vos. 🤍"><img src="photos/13-thumb.webp" alt="Nuestra graduación. Qué lindo compartir ese día con vos. 🤍" loading="lazy" width="1200" height="1600" decoding="async"></button>
+            <p class="photo-caption">Nuestra graduación. Qué lindo compartir ese día con vos. 🤍</p>
+          </div>
+          <div class="photo-card">
+            <button class="photo-tile" data-photo="1" aria-label="Ampliar foto 2: Nuestra salida a la feria kawaii, con una Kuromi de regalo para mi princesa. 🤍"><img src="photos/06-thumb.webp" alt="Nuestra salida a la feria kawaii, con una Kuromi de regalo para mi princesa. 🤍" loading="lazy" width="1600" height="1200" decoding="async"></button>
+            <p class="photo-caption">Nuestra salida a la feria kawaii, con una Kuromi de regalo para mi princesa. 🤍</p>
+          </div>
+          <div class="photo-card">
+            <button class="photo-tile" data-photo="2" aria-label="Ampliar foto 3: Nuestra matiné de Halloween del cole. 🤍"><img src="photos/15-thumb.webp" alt="Nuestra matiné de Halloween del cole. 🤍" loading="lazy" width="1600" height="1200" decoding="async"></button>
+            <p class="photo-caption">Nuestra matiné de Halloween del cole. 🤍</p>
+          </div>
+          <div class="photo-card">
+            <button class="photo-tile" data-photo="3" aria-label="Ampliar foto 4: Las primeras flores amarillas que te regalé, para mi flor favorita. 💛"><img src="photos/09-thumb.webp" alt="Las primeras flores amarillas que te regalé, para mi flor favorita. 💛" loading="lazy" width="729" height="1296" decoding="async"></button>
+            <p class="photo-caption">Las primeras flores amarillas que te regalé, para mi flor favorita. 💛</p>
+          </div>
+          <div class="photo-card">
+            <button class="photo-tile" data-photo="4" aria-label="Ampliar foto 5: Con vos, todo tiene más color."><img src="photos/12-thumb.webp" alt="Con vos, todo tiene más color." loading="lazy" width="1600" height="1200" decoding="async"></button>
+            <p class="photo-caption">Con vos, todo tiene más color.</p>
+          </div>
+          <div class="photo-card">
+            <button class="photo-tile" data-photo="5" aria-label="Ampliar foto 6: Las cosas chiquitas que me encantan."><img src="photos/30-thumb.webp" alt="Las cosas chiquitas que me encantan." loading="lazy" width="1200" height="1600" decoding="async"></button>
+            <p class="photo-caption">Las cosas chiquitas que me encantan.</p>
+          </div>
+          <div class="photo-card">
+            <button class="photo-tile" data-photo="6" aria-label="Ampliar foto 7: Nuestro 14 de febrero juntitos. 🤍"><img src="photos/18-thumb.webp" alt="Nuestro 14 de febrero juntitos. 🤍" loading="lazy" width="1600" height="1200" decoding="async"></button>
+            <p class="photo-caption">Nuestro 14 de febrero juntitos. 🤍</p>
+          </div>
+          <div class="photo-card">
+            <button class="photo-tile" data-photo="7" aria-label="Ampliar foto 8: En el Mc, unas horitas antes de pedirte que seas mi novia. 🤍"><img src="photos/07-thumb.webp" alt="En el Mc, unas horitas antes de pedirte que seas mi novia. 🤍" loading="lazy" width="1200" height="1600" decoding="async"></button>
+            <p class="photo-caption">En el Mc, unas horitas antes de pedirte que seas mi novia. 🤍</p>
+          </div>
+          <div class="photo-card">
+            <button class="photo-tile" data-photo="8" aria-label="Ampliar foto 9: De gala en el cole, los dos bien lindos. 🤍"><img src="photos/11-thumb.webp" alt="De gala en el cole, los dos bien lindos. 🤍" loading="lazy" width="1600" height="1200" decoding="async"></button>
+            <p class="photo-caption">De gala en el cole, los dos bien lindos. 🤍</p>
+          </div>
+          <div class="photo-card">
+            <button class="photo-tile" data-photo="9" aria-label="Ampliar foto 10: Tu sonrisa, mi parte favorita."><img src="photos/24-thumb.webp" alt="Tu sonrisa, mi parte favorita." loading="lazy" width="1200" height="1600" decoding="async"></button>
+            <p class="photo-caption">Tu sonrisa, mi parte favorita.</p>
+          </div>
+          <div class="photo-card">
+            <button class="photo-tile" data-photo="10" aria-label="Ampliar foto 11: Un beso que quiero guardar."><img src="photos/02-thumb.webp" alt="Un beso que quiero guardar." loading="lazy" width="1200" height="1600" decoding="async"></button>
+            <p class="photo-caption">Un beso que quiero guardar.</p>
+          </div>
+          <div class="photo-card">
+            <button class="photo-tile" data-photo="11" aria-label="Ampliar foto 12: Mi artista favorita."><img src="photos/17-thumb.webp" alt="Mi artista favorita." loading="lazy" width="900" height="1600" decoding="async"></button>
+            <p class="photo-caption">Mi artista favorita.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="12" aria-label="Ampliar foto 13: Momentos para guardar."><img src="photos/01-thumb.webp" alt="Momentos para guardar." loading="lazy" width="1600" height="1200" decoding="async"></button>
+            <p class="photo-caption">Momentos para guardar.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="13" aria-label="Ampliar foto 14: Un besito en el camino."><img src="photos/03-thumb.webp" alt="Un besito en el camino." loading="lazy" width="1600" height="1200" decoding="async"></button>
+            <p class="photo-caption">Un besito en el camino.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="14" aria-label="Ampliar foto 15: Así de cerquita."><img src="photos/04-thumb.webp" alt="Así de cerquita." loading="lazy" width="1200" height="1600" decoding="async"></button>
+            <p class="photo-caption">Así de cerquita.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="15" aria-label="Ampliar foto 16: Donde estemos, juntos."><img src="photos/05-thumb.webp" alt="Donde estemos, juntos." loading="lazy" width="900" height="1600" decoding="async"></button>
+            <p class="photo-caption">Donde estemos, juntos.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="16" aria-label="Ampliar foto 17: Qué lindo compartir con vos."><img src="photos/08-thumb.webp" alt="Qué lindo compartir con vos." loading="lazy" width="1200" height="1600" decoding="async"></button>
+            <p class="photo-caption">Qué lindo compartir con vos.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="17" aria-label="Ampliar foto 18: Un refugio en tu abrazo."><img src="photos/10-thumb.webp" alt="Un refugio en tu abrazo." loading="lazy" width="1600" height="1200" decoding="async"></button>
+            <p class="photo-caption">Un refugio en tu abrazo.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="18" aria-label="Ampliar foto 19: Vos, yo y un recuerdo más."><img src="photos/14-thumb.webp" alt="Vos, yo y un recuerdo más." loading="lazy" width="1600" height="900" decoding="async"></button>
+            <p class="photo-caption">Vos, yo y un recuerdo más.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="19" aria-label="Ampliar foto 20: Siempre hay tiempo para un beso."><img src="photos/16-thumb.webp" alt="Siempre hay tiempo para un beso." loading="lazy" width="1600" height="1200" decoding="async"></button>
+            <p class="photo-caption">Siempre hay tiempo para un beso.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="20" aria-label="Ampliar foto 21: Otro besito para la colección."><img src="photos/19-thumb.webp" alt="Otro besito para la colección." loading="lazy" width="1200" height="1600" decoding="async"></button>
+            <p class="photo-caption">Otro besito para la colección.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="21" aria-label="Ampliar foto 22: Un poquito más cerca."><img src="photos/20-thumb.webp" alt="Un poquito más cerca." loading="lazy" width="960" height="1280" decoding="async"></button>
+            <p class="photo-caption">Un poquito más cerca.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="22" aria-label="Ampliar foto 23: Mi regalo favorito es tu compañía."><img src="photos/21-thumb.webp" alt="Mi regalo favorito es tu compañía." loading="lazy" width="1600" height="1200" decoding="async"></button>
+            <p class="photo-caption">Mi regalo favorito es tu compañía.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="23" aria-label="Ampliar foto 24: El día de tu Jura a la bandera en el Hospital."><img src="photos/22-thumb.webp" alt="El día de tu Jura a la bandera en el Hospital." loading="lazy" width="591" height="1280" decoding="async"></button>
+            <p class="photo-caption">El día de tu Jura a la bandera en el Hospital.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="24" aria-label="Ampliar foto 25: Nosotros, sin poses perfectas."><img src="photos/23-thumb.webp" alt="Nosotros, sin poses perfectas." loading="lazy" width="1200" height="1600" decoding="async"></button>
+            <p class="photo-caption">Nosotros, sin poses perfectas.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="25" aria-label="Ampliar foto 26: Cuando fuimos al recital de AIRBAG y estuvimos juntos."><img src="photos/25-thumb.webp" alt="Cuando fuimos al recital de AIRBAG y estuvimos juntos." loading="lazy" width="738" height="1600" decoding="async"></button>
+            <p class="photo-caption">Cuando fuimos al recital de AIRBAG y estuvimos juntos..</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="26" aria-label="Ampliar foto 27: Estos ratitos valen un montón."><img src="photos/26-thumb.webp" alt="Estos ratitos valen un montón." loading="lazy" width="960" height="1280" decoding="async"></button>
+            <p class="photo-caption">Estos ratitos valen un montón.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="27" aria-label="Ampliar foto 28: Qué lindo compartir el camino."><img src="photos/27-thumb.webp" alt="Qué lindo compartir el camino." loading="lazy" width="960" height="1280" decoding="async"></button>
+            <p class="photo-caption">Qué lindo compartir el camino.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="28" aria-label="Ampliar foto 29: Recuerdos que se quedan."><img src="photos/28-thumb.webp" alt="Recuerdos que se quedan." loading="lazy" width="721" height="1600" decoding="async"></button>
+            <p class="photo-caption">Recuerdos que se quedan.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="29" aria-label="Ampliar foto 30: Juntos entre la gente."><img src="photos/29-thumb.webp" alt="Juntos entre la gente." loading="lazy" width="1200" height="1600" decoding="async"></button>
+            <p class="photo-caption">Juntos entre la gente.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="30" aria-label="Ampliar foto 31: Nosotros, yendo hacia Lujan."><img src="photos/32-thumb.webp" alt="Nosotros, yendo hacia Lujan." loading="lazy" width="960" height="1280" decoding="async"></button>
+            <p class="photo-caption">Nosotros, yendo hacia Lujan.</p>
+          </div>
+          <div class="photo-card" hidden>
+            <button class="photo-tile" data-photo="31" aria-label="Ampliar foto 32: Y que nos queden muchos besos más."><img src="photos/31-thumb.webp" alt="Y que nos queden muchos besos más." loading="lazy" width="900" height="1600" decoding="async"></button>
+            <p class="photo-caption">Y que nos queden muchos besos más.</p>
+          </div>
+        </div>
+        <div class="album-controls">
+          <p id="album-count" aria-live="polite">12 de 32 momentitos nuestros</p>
+          <button class="primary" id="show-more" aria-expanded="false" aria-controls="album-gallery">Más momentitos nuestros ♡</button>
+        </div>
+      </section>
+      <div class="ending">
+        <button class="lucky-charm" id="lucky-charm" aria-label="Descubrir mi Lucky Charm" title="¿Encontraste mi amuleto?"><img src="decor/ladybug.svg" alt="" width="32" height="32"><span aria-hidden="true">✧</span></button>
+        <p>Para volver a nosotros, siempre. ♡</p>
+      </div>
+      <footer><span>Hecho con mucho amor, para vos.</span><span> ♡</span></footer>
+      <section id="siempre-nosotros" class="forever-section" aria-labelledby="forever-title">
+        <div class="floating-love" aria-hidden="true"><span style="--left:5%;--delay:-0s;--duration:19s">♡</span><span style="--left:16%;--delay:-3s;--duration:21s">♡</span><span style="--left:85%;--delay:-6s;--duration:23s">♡</span><span style="--left:95%;--delay:-9s;--duration:25s">♡</span><span style="--left:9%;--delay:-12s;--duration:27s">♡</span><span style="--left:91%;--delay:-15s;--duration:29s">♡</span></div>
+        <div class="forever-heading gentle-reveal">
+          <div class="beating-heart"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 86C37 73 10 55 10 32C10 10 39 7 50 27C61 7 90 10 90 32C90 55 63 73 50 86Z" fill="currentColor"/></svg></div>
+          <div class="eyebrow">Para vos, Jesi</div>
+          <h2 id="forever-title">Siempre nosotros. 🤍</h2>
+          <div class="forever-line" aria-hidden="true"></div>
+        </div>
+        <div class="forever-letter">
+          <p class="gentle-reveal">Mi amor, si hay algo que quiero que nunca te olvides es que <strong>vos y yo somos un equipo, y siempre quiero que lo seamos.</strong> 🤍</p>
+          <p class="gentle-reveal">Sé que nuestra historia no es perfecta, que tuvimos momentos hermosos y otros que nos hicieron sentir que todo se venía abajo. Hubo días difíciles, momentos de tristeza y hasta un tiempo en el que necesitamos tomar distancia para encontrarnos con nosotros mismos.</p>
+          <p class="gentle-reveal">Pero si hoy estás leyendo esto, es porque, después de todo, nuestros caminos volvieron a encontrarse. Y quiero que sepas lo feliz que me hace poder seguir escribiendo nuestra historia juntos.</p>
+          <p class="gentle-reveal">Porque entendí que amar no significa que nunca vayamos a tener problemas, sino aprender a enfrentarlos, escucharnos, comprendernos y ayudarnos a sanar.</p>
+          <p class="gentle-reveal love-emphasis"><strong>No podemos cambiar nuestro pasado, mi princesa, pero sí podemos construir un futuro diferente, uno en el que los dos nos sintamos amados, seguros y elegidos todos los días.</strong></p>
+          <p class="gentle-reveal">Quiero demostrarte de todas las formas posibles cuánto te amo. Con palabras, sí, pero sobre todo con acciones, con pequeños detalles, con abrazos, besitos, paciencia y estando para vos cuando más me necesites.</p>
+          <p class="gentle-reveal">Quiero que nunca dudes de lo especial que sos para mí. Que sepas que, entre tantas personas en este mundo, yo sigo eligiéndote a vos, mi vida. Y que lo más lindo de todo sea saber que vos también me elegís a mí.</p>
+          <p class="gentle-reveal">No quiero que nuestros problemas nos hagan olvidar todo lo hermoso que tenemos. Quiero que aprendamos de ellos, que crezcamos juntos y que, cuando alguno de los dos se sienta perdido, recuerde que puede encontrar apoyo en el otro.</p>
+          <p class="gentle-reveal love-emphasis"><strong>Porque no somos vos contra mí, ni yo contra vos. Somos nosotros dos contra cualquier problema que la vida nos ponga enfrente.</strong></p>
+          <p class="gentle-reveal">Y si alguna vez las cosas vuelven a ponerse difíciles, quiero que recordemos todo lo que aprendimos, lo que nos costó llegar hasta acá y por qué decidimos volver a elegirnos.</p>
+          <p class="gentle-reveal">No te prometo una vida sin problemas, mi amor. Pero sí te prometo poner de mi parte para que nunca nos falten las ganas de escucharnos, cuidarnos y luchar por lo que estamos construyendo.</p>
+          <p class="gentle-reveal love-emphasis">Porque no quiero una historia perfecta. <strong>Quiero una historia con vos, donde los dos sigamos eligiéndonos por amor, todos los días.</strong></p>
+          <p class="gentle-reveal">Te amo muchísimo. Sabés que siempre vas a poder contar conmigo, para escucharte cuando necesites hablar, acompañarte aunque sea a la distancia cuando tengas un día difícil y festejar con vos cada cosa linda que te pase. Quiero que sientas que conmigo podés ser vos, sin tener que estar bien todo el tiempo.</p>
+          <p class="gentle-reveal love-emphasis"><strong>Y aunque te haya escrito todas estas cartitas, siento que todavía me quedo corto para explicarte cuánto te amo. A veces quisiera que pudieras sentir por un ratito lo que siento yo por vos, mi princesa. Ojalá pueda hacértelo sentir de a poquito, con la forma en que te escucho, te acompaño y te cuido. 🤍</strong></p>
+        </div>
+      </section>
+      <section id="ultimo-abrazo" class="last-embrace" aria-label="Siempre vos y yo. Siempre nosotros.">
+        <div class="floating-love" aria-hidden="true"><span style="--left:5%;--delay:-0s;--duration:19s">♡</span><span style="--left:16%;--delay:-3s;--duration:21s">♡</span><span style="--left:85%;--delay:-6s;--duration:23s">♡</span><span style="--left:95%;--delay:-9s;--duration:25s">♡</span><span style="--left:9%;--delay:-12s;--duration:27s">♡</span><span style="--left:91%;--delay:-15s;--duration:29s">♡</span></div>
+        <img class="rooftop-duo" src="decor/rooftop-duo.svg" alt="Siluetas de Ladybug y Cat Noir juntos en un tejado" width="260" height="300" loading="lazy">
+        <div class="team-charms" aria-hidden="true"><img src="decor/ladybug.svg" alt=""><span>♡</span><img src="decor/cat.svg" alt=""></div>
+        <div class="last-heart"><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 86C37 73 10 55 10 32C10 10 39 7 50 27C61 7 90 10 90 32C90 55 63 73 50 86Z" fill="currentColor"/></svg></div>
+        <blockquote class="last-quote">No somos vos contra mí, ni yo contra vos. Somos nosotros dos contra cualquier problema que la vida nos ponga enfrente. 🤍</blockquote>
+        <p class="last-sign">Siempre vos y yo. Siempre nosotros. 🤍</p>
+      </section>
+    </main>
+    <dialog id="modal" aria-labelledby="modal-title">
+      <button class="close" aria-label="Cerrar">×</button>
+      <div class="modal-icon" aria-hidden="true">♡</div>
+      <h2 class="modal-title" id="modal-title"></h2>
+      <div class="modal-content" id="modal-content"></div>
+    </dialog>
+    <script>
+      const stars = document.getElementById('stars');
+      let seed = 42;
+      function random() {
+        seed = (seed * 16807) % 2147483647;
+        return (seed - 1) / 2147483646
+      }
+      for (let i = 0; i < 115; i++) {
+        const s = document.createElement('i');
+        s.className = 'speck';
+        const size = random() * 1.7 + .5;
+        s.style.cssText = `left:${random() * 100}%;top:${random() * 100}%;width:${size}px;height:${size}px;opacity:${random() * .7 + .15};animation-delay:${random() * 5}s`;
+        stars.append(s)
+      }
+
+      const modal = document.getElementById('modal'), title = document.getElementById('modal-title'), content = document.getElementById('modal-content');
+      let previousFocus;
+      const note = '';
+      function openModal(t, html) {
+        if (!modal.open) previousFocus = document.activeElement;
+        title.textContent = t;
+        content.innerHTML = html + note;
+        if (!modal.open) modal.showModal()
+      }
+      function closeModal() {
+        modal.close();
+        previousFocus?.focus()
+      }
+      document.querySelector('.close').onclick = closeModal;
+      modal.addEventListener('click', e => {
+        if (e.target === modal) {
+          const r = modal.getBoundingClientRect();
+          if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closeModal()
+        }
+      });
+
+      const letters = {
+        "miss": [
+          "Cuando me extrañes",
+          "Mi amor, yo también tengo muchas ganas de estar con vos. Ojalá pudiera aparecer ahí, abrazarte fuerte y llenarte de besitos.",
+          "Extraño hasta esas pavadas que hacemos cuando estamos juntos, molestarte un poquito y después quedarme abrazado a vos como si no tuviera nada más que hacer.",
+          "Mientras tanto, escribime, aunque sea para decirme «te extraño» por quinta vez, porque yo también te lo diría mil veces. Y cuando nos veamos, me debés un abrazo largo, de esos que no dan ganas de soltar.",
+          "Te amo mucho, mi princesa. 🤍"
+        ],
+        "hard": [
+          "Cuando tengas un día difícil",
+          "Mi amor, no sé qué pasó hoy, pero ojalá pudiera estar ahí con vos para escucharte y hacerte compañía.",
+          "Si tenés ganas de hablar, escribime o llamame. Contame lo que te pasó, aunque sea para quejarnos juntos de lo feo que fue el día. Y si no tenés ganas de contar nada, podemos hablar de cualquier otra cosa para distraerte un ratito. No hace falta que me expliques todo para que quiera acompañarte.",
+          "No te exijas tanto, mi princesa. Sé cuánto te esforzás y un día malo no borra todo eso. Por hoy descansá un poquito, que no tenés que resolver todo ahora.",
+          "Aunque no pueda estar al lado tuyo, sabés que siempre voy a estar para escucharte y apoyarte, pase lo que pase. No tenés que tener un buen día ni estar de buen humor para hablarme, mi amor. También quiero acompañarte cuando las cosas cuesten un poquito más."
+        ],
+        "love": [
+          "Cuando necesites sentirte amada",
+          "Mi amor, si abriste esta cartita, vení que te recuerdo algo: te amo muchísimo y me encanta que seas vos la persona con la que comparto todo esto.",
+          "Me encanta tu sonrisa, escucharte hablar de tus cosas, tus abrazos y esos besitos que siempre me dejan con ganas de uno más. A veces estoy haciendo cualquier cosa, me acuerdo de vos y ya me dan ganas de escribirte o de estar ahí molestándote un ratito.",
+          "Y no te quiero solamente cuando estás contenta y todo está bien. También quiero estar con vos cuando tenés un mal día, cuando estás cansada o cuando solo necesitás que te abracen sin preguntarte nada.",
+          "Ojalá pudiera hacerte sentir por un ratito todo lo que siento por vos, mi princesa. Mientras tanto, voy a seguir buscando formas de demostrártelo, con estas cartitas y con las cosas chiquitas de todos los días.",
+          "Te amo mucho, mi princesa tikita. Qué lindo poder ser tu novio. 🤍"
+        ],
+        "sleep": [
+          "Cuando no puedas dormir",
+          "¿Todavía despierta, mi amor? Ojalá estuviera ahí para que te acomodes al lado mío, abrazarte y hacerte mimitos hasta que te dé sueñito.",
+          "Si tenés muchas cosas dando vueltas en la cabeza, podés contarme. Y si ya estoy dormido, dejame tus mensajitos, que cuando me despierte los voy a leer.",
+          "Por ahora acomodate bien, tapate y aflojá un poquito esos hombritos. Eso que te preocupa lo podemos hablar mañana; no hace falta resolverlo todo esta noche.",
+          "Imaginate que estoy ahí, dándote un besito en la frente y diciéndote bajito cuánto te amo. Aunque capaz también te estaría molestando un poquito antes de dejarte dormir, vos ya sabés.",
+          "Descansá, mi princesa. Te debo esos mimitos para cuando durmamos juntitos. 🤍"
+        ],
+        "doubt": [
+          "Cuando dudes de vos misma",
+          "Mi amor, ojalá pudieras verte un ratito como te veo yo. A veces sos muy exigente con vos misma y te olvidás de reconocer todo lo que hacés, todo lo que intentás y las ganas que le ponés, incluso cuando estás cansada.",
+          "Que algo no te salga como querías no significa que no seas capaz. Podés equivocarte, volver a intentar, pedir ayuda o descansar un poquito. No tenés que hacer todo perfecto, mi princesa.",
+          "Yo estoy orgulloso de vos. Y no te lo digo solamente porque soy tu novio: veo cómo te esforzás y me dan muchas ganas de abrazarte y recordarte que todo eso también vale, aunque vos a veces no lo veas.",
+          "Si hoy te cuesta confiar en vos, contame qué te está pasando. Te escucho, te hago unos mimitos y vemos juntos por dónde seguir.",
+          "Te amo muchísimo. No seas tan durita con vos, que esa personita que tanto se exige es mi persona favorita. 🤍"
+        ],
+        "hug": [
+          "Cuando necesites un abrazo",
+          "Vení acá, mi amor, que si estuviera con vos ya te tendría abrazada bien fuerte.",
+          "No hace falta que me expliques nada si no tenés ganas. A veces uno solamente quiere estar cerquita de la persona que ama, esconder la carita ahí y quedarse un ratito sin decir nada.",
+          "Me gustaría hacerte mimitos en la carita, darte un besito en la frente y dejar que te quedes conmigo todo lo que necesites. Yo tampoco tendría muchas ganas de soltarte.",
+          "Esta cartita no abraza tan lindo como yo, pero te la dejo para que te acuerdes de que tengo muchos abrazos guardados para vos. Cuando nos veamos, vení directamente a buscarlos.",
+          "Te amo mucho, mi princesa tikita. Te mando uno bien apretadito hasta que pueda dártelo de verdad. 🤍"
+        ],
+        "happy": [
+
+          "Cuando te pase algo lindo",
+
+          "¿Pasó algo lindo, mi amor? Vení, contame todo, que quiero festejar con vos.",
+
+          "Me encanta escucharte contenta, que me cuentes lo que pasó con todos los detalles y sentir esa emoción tuya, aunque sea por mensajitos. Seguro ya me dieron ganas de verte y llenarte de besitos.",
+
+          "Si es algo por lo que te venías esforzando, ojalá te tomes un ratito para decir «lo logré» y estar orgullosa de vos. Yo voy a estar ahí recordándote todo lo que hiciste para llegar hasta eso.",
+
+          "Quiero que sepas que siempre te voy a apoyar y voy a estar orgulloso de vos, mi amor. Cuando las cosas te salgan como querés y también cuando cuesten un poquito más. Me encanta acompañarte y verte cumplir las cosas que te proponés.",
+
+          "Y si simplemente te pasó algo chiquito que te alegró el día, también quiero saberlo. No hace falta que sea algo enorme para que me ponga feliz por vos.",
+
+          "Te amo mucho, mi amorrr. Hoy te toca disfrutar de eso lindo que te pasó, y a mí festejar con mi novia hermosa. 🤍"
+
+        ],
+        "tired": [
+          "Cuando estés agotada",
+          "Mi amor, ¿estás muy cansadita? Vení, dejá un ratito lo que estás haciendo y descansá un poco.",
+          "Sé que a veces querés llegar con todo y seguís aunque ya no te den más las ganas ni la cabeza. Pero también merecés un ratito para vos, sin estar pensando en qué te falta hacer.",
+          "Ojalá estuviera ahí para que apoyes la cabecita en mí, hacerte mimitos en la carita y quedarnos tranquilos. Sin tener que hacer ningún plan, solamente estar juntitos.",
+          "Y si puedo ayudarte con algo para que tengas un poquito menos encima, decime, mi amor. Me gusta acompañarte también en esas cosas.",
+          "Por hoy ya hiciste mucho. No te sientas mal por necesitar descansar, mi princesa. Te amo muchísimo y quiero que te cuides, que todavía te debo muchos besitos y abrazos. 🤍"
+        ],
+        "smile": [
+          "Cuando quieras sonreír",
+          "Hola, mi princesa hermosa. Vengo a molestarte un ratito, pero esta vez por una buena causa: quiero sacarte una sonrisita.",
+          "Si estuviera ahí, seguramente ya estaría haciendo alguna pavada, llenándote de besitos o acercándome demasiado solo para que me digas que soy un pesado. Y sí, un poquito, pero soy tu pesado.",
+          "Me encanta cuando nos reímos juntos por cualquier tontería. Esos momentos en los que seguimos diciendo pavadas y al final ni sabemos de qué nos estamos riendo.",
+          "No sé si esta cartita ya te hizo sonreír, pero por las dudas te aviso que tenés pendiente un ataque de besitos la próxima vez que nos veamos.",
+          "Te amo muchísimo, mi gordita. Y si no sonreíste todavía, escribime, que voy a tener que esforzarme un poquito más. 🤍"
+        ],
+        "future": [
+          "Cuando te dé miedo el futuro",
+          "Mi amor, ¿estás pensando mucho en lo que viene? A mí también me pasa a veces. Me pongo a pensar en un montón de cosas que todavía ni pasaron y termino preocupándome de más.",
+          "No sé cómo va a salir todo, pero sí sé que quiero seguir compartiendo cosas con vos. Hacer planes, verte cumplir tus sueños y que sigamos encontrando ratitos para nosotros entre todo lo que tengamos que hacer.",
+          "Y si algo no sale como esperamos, lo iremos viendo. Podemos cambiar de idea, buscar otra forma o pedir ayuda. No tenemos que tener toda la vida resuelta ahora, mi princesa.",
+          "Si hay algo que te está dando miedo, contámelo. Capaz no tengo una respuesta para todo, pero quiero escucharte y pensar con vos qué podemos hacer. Acordate de que somos un equipo.",
+          "Te amo muchísimo, mi princesa hermosa. Vamos de a poquito, que todavía nos quedan muchas cosas lindas por vivir juntitos. 🤍"
+        ],
+        "apart": [
+
+          "Cuando estemos peleados",
+
+          "Mi amor, capaz ahora estamos enojados y no tenemos muchas ganas de hablar, pero quería dejarte esto para que lo leas: te amo, incluso cuando estamos peleados.",
+
+          "No me gusta estar mal con vos. Extraño poder hablarte como siempre, contarte cualquier pavada y estar cerquita tuyo. Pero también quiero que podamos hablar de lo que pasó y entendernos, porque me importa cómo te sentís.",
+
+          "Si hice algo que te lastimó, quiero escucharte y hacerme cargo. Y también poder contarte lo que me pasó a mí, sin que terminemos lastimándonos más. Si necesitamos calmarnos un ratito antes, está bien, mi amor.",
+
+          "Acordate de que somos un equipo, mi princesa. No se trata de ver quién gana la discusión. Quiero que encontremos la forma de resolverlo juntos y que los dos nos sintamos escuchados.",
+
+          "Cuando estemos listos, hablemos. Yo quiero poner de mi parte para que estemos bien, y después darte ese abrazo que seguro estoy extrañando tanto como vos.",
+
+          "Te amo muchísimo mas de lo que podrias llegar a imaginar, mi princesa. Aunque ahora estemos enojados, sigo queriendo cuidarnos. 🤍"
+
+        ],
+        "just": [
+          "Cuando quieras abrir una porque sí",
+          "¿Así que viniste a abrir una cartita porque sí, mi amor? Me gusta que hayas venido, porque yo también tenía ganas de decirte algo lindo sin ningún motivo especial.",
+          "Te amo muchísimo, mi princesa. A veces estoy haciendo cualquier cosa y me dan ganas de mandarte un mensajito solo para recordártelo. Bueno, esta cartita es un poquito eso.",
+          "Me encanta ser tu novio, que me cuentes tus cosas y poder contarte las mías. Mandarnos pavadas, molestarnos un ratito y después ponernos todos mimosos. Me gustan mucho esas cosas nuestras.",
+          "Si estuvieras acá, ya te habría robado unos cuantos besitos mientras leés esto. Así que cuando nos veamos me los cobro, que por mensaje no es lo mismo.",
+          "Te amo mucho, mi princesa . Ahora seguí con lo tuyo, pero sabiendo que hay un novio tuyo con muchas ganas de verte y abrazarte. 🤍"
+        ],
+        "sorry": [
+          "Cuando necesites una disculpa",
+          "Mi amor, si hice algo que te lastimó, perdón. Me duele saber que te hice sentir mal, y quiero escucharte para entender qué pasó y cómo te sentiste.",
+          "No quiero decirte «perdón» y esperar que con eso ya esté todo bien. Quiero hacerme cargo de lo que hice y demostrarte que puedo hacerlo mejor, porque vos y lo nuestro me importan muchísimo.",
+          "Si necesitás decirme algo, aunque sea difícil de escuchar, quiero que podamos hablarlo. Voy a poner de mi parte para escucharte sin buscar una excusa para todo.",
+          "Y si todavía estás triste o enojada, lo entiendo, mi princesa. No tenés que estar bien enseguida ni darme un abrazo si todavía no tenés ganas. Quiero respetar eso también.",
+          "Te amo mucho, mi princesa tikita. Esta cartita es una forma de acercarme, pero sé que también me toca demostrarte con hechos cuánto quiero cuidarte y cuidar lo nuestro. 🤍"
+        ],
+        "lonely": [
+          "Cuando te sientas solita",
+          "Mi amor, ojalá pudiera aparecer ahí y hacerte compañía un ratito. Sentarme al lado tuyo, preguntarte cómo estás y quedarme escuchándote, aunque me cuentes la cosa más chiquita de tu día.",
+          "Si tenés ganas de hablar, escribime. No hace falta que tengas algo importante para contarme ni que busques una excusa. Podés mandarme un «amor, haceme compañía» y listo.",
+          "Y si justo estoy ocupado o tardo en responder, no pienses que me molestás, mi princesa. Me gusta saber de vos y compartir esos ratitos, aunque sea por mensajes o una llamadita.",
+          "Mientras tanto, te dejo esta cartita para acompañarte un poquito. Imaginate que estoy ahí cerquita, haciéndote mimitos en la carita y robándote algún besito entre medio.",
+          "Te amo muchísimo. Qué ganas de estar con vos, aunque sea para no hacer nada y quedarnos juntitos. 🤍"
+        ],
+        "cry": [
+          "Cuando tengas ganas de llorar",
+          "Mi amor, vení acá. Si tenés ganas de llorar, llorá, no hace falta que te aguantes conmigo ni que hagas de cuenta que estás bien.",
+          "Ojalá pudiera tenerte cerquita, abrazarte y hacerte mimitos en la carita. No te apuraría para que me cuentes qué pasó; podemos quedarnos así un ratito y hablar cuando tengas ganas.",
+          "Si querés contarme, te escucho, aunque no sepas por dónde empezar o me lo tengas que decir entre lágrimas. Y si ni vos sabés bien por qué estás llorando, también está bien, mi princesa.",
+          "Capaz no sé qué decir para hacerte sentir mejor, pero quiero acompañarte. Podés decirme si necesitás hablar, distraerte un poquito o solamente que me quede con vos.",
+          "Te amo muchísimo, hermosa de mi vida. También podés venir a mí en esos días en los que no te sale sonreír. Te guardo un abrazo largo y un besito en la frente. 🤍"
+        ],
+        "see": [
+          "Cuando quieras que ya nos veamos",
+          "Mi amor, yo también quiero que llegue ese ratito de verte. Los mensajes y las llamadas me encantan, pero qué ganas de tenerte enfrente y poder darte todos esos besitos que te mando por el celu.",
+          "Ya me imagino abrazándote apenas te vea y quedándome ahí un poquito más, aunque después te empiece a molestar como siempre.",
+          "Mientras tanto, podemos ir pensando qué hacemos cuando nos veamos. Capaz salir a merendar, dar una vueltita o simplemente quedarnos juntitos haciendo cualquier pavada. A mí lo que más me importa es estar con vos.",
+          "Y si falta un poquito todavía, escribime y nos hacemos compañía mientras esperamos. Seguro terminamos diciéndonos «quiero verte» unas cuantas veces más.",
+          "Te amo muchísimo, mi tikita. Guardame muchos besitos, que yo tengo un montón esperando por vos. 🤍"
+        ],
+        "proud": [
+          "Cuando quieras saber por qué te admiro",
+          "Mi amor, admiro mucho las ganas que le ponés a tus cosas. Sé que a veces te cansás, te frustrás o sentís que no te está saliendo nada, pero yo también veo todo el esfuerzo que hay atrás.",
+          "Me encanta escucharte hablar de algo que te ilusiona, que me cuentes tus ideas y me muestres lo que estás haciendo. Capaz no entiendo todo de entrada, pero me gusta que me hagas parte y poder acompañarte.",
+          "Y no hace falta que te salga todo bien para que esté orgulloso de vos, mi princesa. También valoro cuando te animás a intentar algo nuevo, cuando pedís ayuda o cuando decís «por hoy necesito descansar».",
+          "A veces vos te quedás pensando en lo que te faltó hacer y yo me quedo pensando en todo lo que ya hiciste. Por eso me gusta recordártelo, aunque capaz te lo repita mil veces.",
+          "Te amo muchísimo, mi princesa hermosa. Me encanta ser tu novio y poder estar cerquita para festejar tus logros y abrazarte cuando las cosas cuesten un poquito más. 🤍"
+        ],
+        "us": [
+          "Cuando quieras recordar lo nuestro",
+          "Mi amor, pensar que el 30 de julio de 2025 a las 17:35 empezó todo esto. Una fecha y una hora que para cualquier otra persona pueden no significar nada, pero que para mí siempre van a ser nuestras.",
+          "Desde ahí fuimos sumando besitos, abrazos, fotos, pavadas y un montón de momentos que me encanta recordar. Algunos están en esta página y otros los tenemos guardados nosotros, de esos que con decir una cosita ya sabemos de qué estamos hablando.",
+          "También pasamos cosas difíciles, mi princesa. Pero hoy me pone muy feliz que podamos estar acá, volviendo a elegirnos y con ganas de seguir construyendo lo nuestro. Quiero que todo lo que aprendimos se note en cómo nos escuchamos y nos cuidamos.",
+          "Cuando mires nuestras fotos, ojalá te acuerdes de cómo te sentías en esos momentos. Yo las miro y me dan ganas de volver a abrazarte, de darte otro beso y de seguir sacándonos muchas más.",
+          "Te amo muchísimo, mi princesa tikita. Gracias por todos esos ratitos que compartimos. Qué lindo pensar que todavía nos quedan recuerdos por hacer juntitos. 🤍"
+        ]
+      };
+
+      function letter(id) {
+        const [t, ...ps] = letters[id];
+        openModal(t, ps.map((p, i) => `<p class="${i === ps.length - 1 ? 'sign' : ''}">${p}</p>`).join(''))
+      }
+      document.querySelectorAll('[data-letter]').forEach(b => b.onclick = () => {
+        if (b.classList.contains('is-opening')) return;
+        b.classList.add('is-opening');
+        setTimeout(() => {
+          letter(b.dataset.letter);
+          b.classList.remove('is-opening');
+          if (b.dataset.letter === 'us') appendFinalLetterLink()
+        }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 380)
+      });
+
+
+      const albumPhotos = [
+        { "src": "photos/13.webp", "thumb": "photos/13-thumb.webp", "caption": "Nuestra graduación. Qué lindo compartir ese día con vos. 🤍", "w": 1200, "h": 1600 },
+        { "src": "photos/06.webp", "thumb": "photos/06-thumb.webp", "caption": "Nuestra salida a la feria kawaii, con una Kuromi de regalo para mi princesa. 🤍", "w": 1600, "h": 1200 },
+        { "src": "photos/15.webp", "thumb": "photos/15-thumb.webp", "caption": "Nuestra matiné de Halloween del cole. 🤍", "w": 1600, "h": 1200 },
+        { "src": "photos/09.webp", "thumb": "photos/09-thumb.webp", "caption": "Las primeras flores amarillas que te regalé, para mi flor favorita. 💛", "w": 729, "h": 1296 },
+        { "src": "photos/12.webp", "thumb": "photos/12-thumb.webp", "caption": "Con vos, todo tiene más color.", "w": 1600, "h": 1200 },
+        { "src": "photos/30.webp", "thumb": "photos/30-thumb.webp", "caption": "Las cosas chiquitas que me encantan.", "w": 1200, "h": 1600 },
+        { "src": "photos/18.webp", "thumb": "photos/18-thumb.webp", "caption": "Nuestro 14 de febrero juntitos. 🤍", "w": 1600, "h": 1200 },
+        { "src": "photos/07.webp", "thumb": "photos/07-thumb.webp", "caption": "En el Mc, unas horitas antes de pedirte que seas mi novia. 🤍", "w": 1200, "h": 1600 },
+        { "src": "photos/11.webp", "thumb": "photos/11-thumb.webp", "caption": "De gala en el cole, los dos bien lindos. 🤍", "w": 1600, "h": 1200 },
+        { "src": "photos/24.webp", "thumb": "photos/24-thumb.webp", "caption": "Tu sonrisa, mi parte favorita.", "w": 1200, "h": 1600 },
+        { "src": "photos/02.webp", "thumb": "photos/02-thumb.webp", "caption": "Un beso que quiero guardar.", "w": 1200, "h": 1600 },
+        { "src": "photos/17.webp", "thumb": "photos/17-thumb.webp", "caption": "Mi artista favorita.", "w": 900, "h": 1600 },
+        { "src": "photos/01.webp", "thumb": "photos/01-thumb.webp", "caption": "Momentos para guardar.", "w": 1600, "h": 1200 },
+        { "src": "photos/03.webp", "thumb": "photos/03-thumb.webp", "caption": "Un besito en el camino.", "w": 1600, "h": 1200 },
+        { "src": "photos/04.webp", "thumb": "photos/04-thumb.webp", "caption": "Así de cerquita.", "w": 1200, "h": 1600 },
+        { "src": "photos/05.webp", "thumb": "photos/05-thumb.webp", "caption": "Donde estemos, juntos.", "w": 900, "h": 1600 },
+        { "src": "photos/08.webp", "thumb": "photos/08-thumb.webp", "caption": "Qué lindo compartir con vos.", "w": 1200, "h": 1600 },
+        { "src": "photos/10.webp", "thumb": "photos/10-thumb.webp", "caption": "Un refugio en tu abrazo.", "w": 1600, "h": 1200 },
+        { "src": "photos/14.webp", "thumb": "photos/14-thumb.webp", "caption": "Vos, yo y un recuerdo más.", "w": 1600, "h": 900 },
+        { "src": "photos/16.webp", "thumb": "photos/16-thumb.webp", "caption": "Siempre hay tiempo para un beso.", "w": 1600, "h": 1200 },
+        { "src": "photos/19.webp", "thumb": "photos/19-thumb.webp", "caption": "Otro besito para la colección.", "w": 1200, "h": 1600 },
+        { "src": "photos/20.webp", "thumb": "photos/20-thumb.webp", "caption": "Un poquito más cerca.", "w": 960, "h": 1280 },
+        { "src": "photos/21.webp", "thumb": "photos/21-thumb.webp", "caption": "Mi regalo favorito es tu compañía.", "w": 1600, "h": 1200 },
+        { "src": "photos/22.webp", "thumb": "photos/22-thumb.webp", "caption": "Personas y momentos que quiero.", "w": 591, "h": 1280 },
+        { "src": "photos/23.webp", "thumb": "photos/23-thumb.webp", "caption": "Nosotros, sin poses perfectas.", "w": 1200, "h": 1600 },
+        { "src": "photos/25.webp", "thumb": "photos/25-thumb.webp", "caption": "Un abrazo entre tanta gente.", "w": 738, "h": 1600 },
+        { "src": "photos/26.webp", "thumb": "photos/26-thumb.webp", "caption": "Estos ratitos valen un montón.", "w": 960, "h": 1280 },
+        { "src": "photos/27.webp", "thumb": "photos/27-thumb.webp", "caption": "Qué lindo compartir el camino.", "w": 960, "h": 1280 },
+        { "src": "photos/28.webp", "thumb": "photos/28-thumb.webp", "caption": "Recuerdos que se quedan.", "w": 721, "h": 1600 },
+        { "src": "photos/29.webp", "thumb": "photos/29-thumb.webp", "caption": "Juntos entre la gente.", "w": 1200, "h": 1600 },
+        { "src": "photos/32.webp", "thumb": "photos/32-thumb.webp", "caption": "Nuestras caras, nuestra historia.", "w": 960, "h": 1280 },
+        { "src": "photos/31.webp", "thumb": "photos/31-thumb.webp", "caption": "Y que nos queden muchos besos más.", "w": 900, "h": 1600 }
+      ];
+      let activePhoto = 0;
+
+      function showPhoto(i) {
+        activePhoto = (i + albumPhotos.length) % albumPhotos.length;
+        const photo = albumPhotos[activePhoto];
+        openModal(photo.caption, '<div id="photo-view"></div><p id="photo-position" aria-live="polite"></p><div class="photo-navigation"><button id="previous-photo" aria-label="Foto anterior">← Anterior</button><button id="next-photo" aria-label="Foto siguiente">Siguiente →</button></div>');
+        modal.classList.add('photo-dialog');
+        content.querySelector('.demo-note')?.remove();
+        const img = document.createElement('img');
+        img.className = 'big-photo';
+        img.src = photo.src;
+        img.alt = photo.caption;
+        document.getElementById('photo-view').append(img);
+        document.getElementById('photo-position').textContent = `${activePhoto + 1} / ${albumPhotos.length}`;
+        document.getElementById('previous-photo').onclick = () => showPhoto(activePhoto - 1);
+        document.getElementById('next-photo').onclick = () => showPhoto(activePhoto + 1)
+      }
+
+      modal.addEventListener('close', () => modal.classList.remove('photo-dialog'));
+
+      modal.addEventListener('keydown', e => {
+        if (!modal.classList.contains('photo-dialog')) return;
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          showPhoto(activePhoto - 1)
+        }
+        if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          showPhoto(activePhoto + 1)
+        }
+      });
+
+      document.querySelectorAll('[data-photo]').forEach(b => b.onclick = () => showPhoto(Number(b.dataset.photo)));
+
+      const moreButton = document.getElementById('show-more');
+      moreButton.onclick = () => {
+        const expanded = moreButton.getAttribute('aria-expanded') === 'true';
+        document.querySelectorAll('#album-gallery .photo-card').forEach((card, i) => {
+          if (i >= 12) card.hidden = expanded
+        });
+        moreButton.setAttribute('aria-expanded', String(!expanded));
+        moreButton.textContent = expanded ? 'Más momentitos nuestros ♡' : 'Ver menos fotos';
+        document.getElementById('album-count').textContent = expanded ? '12 de 32 momentitos nuestros' : '32 momentitos para guardar';
+        if (!expanded) document.querySelector('[data-photo="12"]').focus(); else document.getElementById('fotos').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
+      };
+
+      const relationshipStart = Date.parse('2025-07-30T17:35:00-03:00');
+
+      function elapsedTogether(now) {
+        const total = Math.max(0, Math.floor((now - relationshipStart) / 1000));
+        return { days: Math.floor(total / 86400), hours: Math.floor(total / 3600) % 24, minutes: Math.floor(total / 60) % 60, seconds: total % 60 }
+      }
+
+      function updateLoveCounter() {
+        const elapsed = elapsedTogether(Date.now());
+        for (const [unit, value] of Object.entries(elapsed)) {
+          document.getElementById('count-' + unit).textContent = unit === 'days' ? String(value) : String(value).padStart(2, '0')
+        }
+      }
+
+      updateLoveCounter();
+      setInterval(updateLoveCounter, 1000);
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) updateLoveCounter()
+      });
+
+      // Final chapter: every paragraph remains readable without JavaScript or motion.
+
+      const reduceLoveMotion = matchMedia('(prefers-reduced-motion: reduce)');
+
+      if ('IntersectionObserver' in window && !reduceLoveMotion.matches) {
+        document.documentElement.classList.add('reveal-enabled');
+        const revealObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              revealObserver.unobserve(entry.target)
+            }
+          })
+        }, { threshold: .08, rootMargin: '0px 0px -15px 0px' });
+        document.querySelectorAll('.gentle-reveal,.last-embrace').forEach(el => revealObserver.observe(el));
+        const atmosphereObserver = new IntersectionObserver(entries => entries.forEach(e => e.target.classList.toggle('in-view', e.isIntersecting)), { threshold: 0 });
+        document.querySelectorAll('.forever-section,.last-embrace').forEach(el => atmosphereObserver.observe(el));
+        reduceLoveMotion.addEventListener('change', e => {
+          if (e.matches) document.documentElement.classList.remove('reveal-enabled')
+        })
+      }
+
+      function goToFinalChapter() {
+        if (modal.open) closeModal();
+        const finale = document.getElementById('siempre-nosotros');
+        finale.scrollIntoView({ behavior: reduceLoveMotion.matches ? 'auto' : 'smooth' });
+        finale.setAttribute('tabindex', '-1');
+        finale.focus({ preventScroll: true })
+      }
+
+      const lastLetter = document.querySelector('[data-letter="us"]');
+      function appendFinalLetterLink() {
+        const button = document.createElement('button');
+        button.className = 'primary final-letter-link';
+        button.textContent = 'Una última cosa, mi amor… 🤍';
+        button.onclick = goToFinalChapter;
+        content.append(button)
+      }
+      ;
+
+      const chapterLink = document.createElement('a');
+      chapterLink.className = 'primary final-letter-link';
+      chapterLink.href = '#siempre-nosotros';
+      chapterLink.textContent = 'Siempre nosotros. 🤍';
+      document.getElementById('cartitas').append(chapterLink);
+
+      const localTracks = [
+  {
+    "title": "Cicatrices",
+    "artist": "Airbag",
+    "src": "audio/track-04.mp3",
+    "duration": 228.649796
+  },
+  {
+    "title": "Cae el Sol",
+    "artist": "Airbag",
+    "src": "audio/track-02.mp3",
+    "duration": 281.417143
+  },
+  {
+    "title": "Campos Elíseos",
+    "artist": "Airbag",
+    "src": "audio/track-03.mp3",
+    "duration": 277.106939
+  },
+  {
+    "title": "Si Me Dices Que Sí",
+    "artist": "Reik, Farruko, Camilo",
+    "src": "audio/track-01.mp3",
+    "duration": 211.748571
+  },
+  {
+    "title": "Culpables",
+    "artist": "Airbag",
+    "src": "audio/track-05.mp3",
+    "duration": 266.527347
+  },
+  {
+    "title": "Diez Días Después",
+    "artist": "Airbag",
+    "src": "audio/track-06.mp3",
+    "duration": 224.261224
+  },
+  {
+    "title": "Ganas de Verte",
+    "artist": "Airbag",
+    "src": "audio/track-07.mp3",
+    "duration": 183.875918
+  },
+  {
+    "title": "Gran Encuentro",
+    "artist": "Airbag",
+    "src": "audio/track-08.mp3",
+    "duration": 186.017959
+  },
+  {
+    "title": "Nunca Lo Olvides",
+    "artist": "Airbag",
+    "src": "audio/track-09.mp3",
+    "duration": 299.859592
+  },
+  {
+    "title": "Pensamientos",
+    "artist": "Airbag",
+    "src": "audio/track-10.mp3",
+    "duration": 233.874286
+  },
+  {
+    "title": "Por Mil Noches",
+    "artist": "Airbag",
+    "src": "audio/track-11.mp3",
+    "duration": 283.924898
+  },
+  {
+    "title": "Tu Locura",
+    "artist": "Airbag",
+    "src": "audio/track-12.mp3",
+    "duration": 237.505306
+  },
+  {
+    "title": "Verte De Cerca",
+    "artist": "Airbag",
+    "src": "audio/track-13.mp3",
+    "duration": 183.588571
+  },
+  {
+    "title": "Vivamos el Momento",
+    "artist": "Airbag",
+    "src": "audio/track-14.mp3",
+    "duration": 284.917551
+  }
+];
+
+      const loveAudio = document.getElementById('love-audio'), songToggle = document.getElementById('music-toggle'), songSeek = document.getElementById('music-seek'), songStatus = document.getElementById('music-status'), songVolume = document.getElementById('music-volume');
+      let currentSong = 0, seekingSong = false;
+
+      function songTime(seconds) {
+        if (!Number.isFinite(seconds)) return '—:—';
+        const n = Math.max(0, Math.floor(seconds));
+        return Math.floor(n / 60) + ':' + String(n % 60).padStart(2, '0')
+      }
+
+      function paintSongState() {
+        const playing = !loveAudio.paused && !loveAudio.ended;
+        document.querySelector('.native-music').classList.toggle('playing', playing);
+        songToggle.textContent = playing ? 'Ⅱ' : '▶';
+        songToggle.setAttribute('aria-label', playing ? 'Pausar música' : 'Reproducir música');
+        document.getElementById('music-heart').classList.toggle('is-playing', playing)
+      }
+
+      async function playSong() {
+        try {
+          await loveAudio.play()
+        } catch (e) {
+          paintSongState();
+          songStatus.textContent = e.name === 'NotAllowedError' ? 'Tocá play para permitir la música.' : 'No pudimos iniciar el audio. Probá otra canción o volvé a tocar play.'
+        }
+      }
+
+      function loadSong(index, play = false) {
+        currentSong = (index + localTracks.length) % localTracks.length;
+        const track = localTracks[currentSong];
+        loveAudio.src = track.src;
+        document.getElementById('music-track').textContent = track.title;
+        document.getElementById('music-artists').textContent = track.artist;
+        songSeek.value = 0;
+        songSeek.disabled = true;
+        document.getElementById('music-elapsed').textContent = '0:00';
+        document.getElementById('music-duration').textContent = songTime(track.duration);
+        songStatus.textContent = 'Tocá play para escuchar. ♡';
+        paintSongState();
+        if (play) playSong()
+      }
+
+      songToggle.onclick = () => {
+        if (loveAudio.paused) playSong(); else loveAudio.pause()
+      };
+      document.getElementById('music-previous').onclick = () => loadSong(currentSong - 1, !loveAudio.paused);
+      document.getElementById('music-next').onclick = () => loadSong(currentSong + 1, !loveAudio.paused);
+      songVolume.oninput = () => {
+        loveAudio.volume = Number(songVolume.value) / 100
+      };
+      loveAudio.volume = .45;
+
+      loveAudio.addEventListener('loadedmetadata', () => {
+        songSeek.max = String(loveAudio.duration);
+        songSeek.disabled = false;
+        document.getElementById('music-duration').textContent = songTime(loveAudio.duration)
+      });
+      loveAudio.addEventListener('timeupdate', () => {
+        if (!seekingSong) {
+          songSeek.value = String(loveAudio.currentTime);
+          document.getElementById('music-elapsed').textContent = songTime(loveAudio.currentTime)
+        }
+      });
+      songSeek.oninput = () => {
+        seekingSong = true;
+        document.getElementById('music-elapsed').textContent = songTime(Number(songSeek.value))
+      };
+      songSeek.onchange = () => {
+        if (Number.isFinite(loveAudio.duration)) loveAudio.currentTime = Number(songSeek.value);
+        seekingSong = false
+      };
+
+      loveAudio.addEventListener('play', () => {
+        paintSongState();
+        songStatus.textContent = 'Sonando para nosotros. 🤍'
+      });
+      loveAudio.addEventListener('pause', () => {
+        paintSongState();
+        songStatus.textContent = 'En pausa. Seguimos cuando quieras.'
+      });
+      loveAudio.addEventListener('ended', () => loadSong(currentSong + 1, true));
+      loveAudio.addEventListener('error', () => {
+        paintSongState();
+        songStatus.textContent = 'No se pudo cargar esta canción. Podés elegir otra.'
+      });
+      loadSong(0);
+
+      let entryMusicPending = true;
+
+      function clearEntryMusic() {
+        entryMusicPending = false;
+        document.removeEventListener('click', startEntryMusic, true);
+        document.removeEventListener('keydown', startEntryMusic, true)
+      }
+
+      function startEntryMusic(event) {
+        if (!entryMusicPending) return;
+        if (event && event.target.closest && event.target.closest('#nuestra-musica')) {
+          clearEntryMusic();
+          return
+        }
+        if (event && event.type === 'keydown' && (event.repeat || event.key === 'Tab' || event.key === 'Escape')) return;
+        playSong()
+      }
+
+      loveAudio.addEventListener('play', clearEntryMusic, { once: true });
+
+      document.addEventListener('click', startEntryMusic, true);
+      document.addEventListener('keydown', startEntryMusic, true);
+
+      startEntryMusic();
+
+
+      document.getElementById('lucky-charm').addEventListener('click', () => {
+        openModal('Mi Lucky Charm ♡', '<div class="lucky-reveal"><img src="decor/ladybug.svg" alt="Amuleto de mariquita"><p class="lucky-quote">Mi amuleto de la suerte es haberte encontrado.</p></div>');
+        content.querySelector('.demo-note')?.remove()
+      });
+    </script>
+  </body>
+</html>
